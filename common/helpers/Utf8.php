@@ -16,6 +16,14 @@ class Utf8 {
 
     }
 
+    /*
+     * В верхний регистр
+     */
+    public static function mb_upCase($str, $encoding = 'utf-8') {
+
+        return mb_strtoupper($str,$encoding);
+
+    }
 
     /*
      * Первая буква в строке (с учетом многобайтовой кодировки)
@@ -28,13 +36,13 @@ class Utf8 {
     }
 
     /*
-     * Заменить первую букву на заглавную
+     * Заменить первую букву на заглавную, а остальные на строчные
      */
 
     public static function mb_ucfirst($str, $encoding = 'utf-8')
     {
-
-        return Utf8::mb_firstLetter($str) . mb_substr($str, 1, mb_strlen($str)-1, $encoding);
+        $str = self::mb_lowCase($str, $encoding);
+        return self::mb_firstLetter($str) . mb_substr($str, 1, mb_strlen($str)-1, $encoding);
     }
 
 

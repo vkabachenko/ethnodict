@@ -11,6 +11,9 @@ class AccentService extends Object
     /* @var $word Word */
     public $word;
 
+    /**
+     *
+     */
     public function remove()
     {
         WordAccent::deleteAll(['id_word' => $this->word->id]);

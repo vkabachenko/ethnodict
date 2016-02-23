@@ -2,7 +2,6 @@
 
 namespace common\components;
 
-
 use yii\base\Component;
 use common\models\Word;
 use common\models\WordAccent;
@@ -38,4 +37,23 @@ class AccentComponent extends Component {
         }
         return $title;
     }
+
+    /**
+     * @param Word $word
+     * @return string title with accents in lowcase
+     **/
+    public function lows($word) {
+
+        return Utf8::mb_lowCase($this->full($word));
+    }
+
+    /**
+     * @param Word $word
+     * @return string title with accents in upcase
+     **/
+    public function caps($word) {
+
+        return Utf8::mb_upCase($this->full($word));
+    }
+
 } 

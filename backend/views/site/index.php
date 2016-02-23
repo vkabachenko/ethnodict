@@ -11,6 +11,8 @@ $this->title = 'Администрирование';
 
 ?>
 
+<h1>Список словарных слов и выражений</h1>
+
 <p>
     <?= Html::a('Новое слово', ['create'], ['class' => 'btn btn-success']) ?>
 </p>
@@ -28,7 +30,18 @@ $this->title = 'Администрирование';
         ],
         [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{update}{delete}',
+            'template' => '{update}{delete}{variant}',
+            'buttons' => [
+                'variant' => function ($url, $model, $key) {
+                        return Html::a('<span class="glyphicon
+                        glyphicon-duplicate"></span>',
+                        ['variant/index', 'id' => $model->id],
+                        [
+                            'data-toggle' => 'tooltip',
+                            'title' => 'Варианты',
+                        ]);
+                    }
+            ],
             'header' => 'Действия'
         ],
     ],

@@ -27,6 +27,9 @@ class SiteController extends Controller
         ];
     }
 
+    /**
+     * @return string
+     */
     public function actionIndex()
     {
         $searchModel = new WordSearch();
@@ -38,37 +41,44 @@ class SiteController extends Controller
         ]);
     }
 
+    /**
+     * @return string
+     */
     public function actionCreate()
     {
         $model = new Word();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $accentService = new AccentService(['word' => $model]);
-            $accentService->insert(Yii::$app->request->post('checkaccent'));
-            return $this->redirect(['index']);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
+        $this->saveModel($model);
+        return $this->render('create',['model' => $model]);
     }
 
+    /**
+     * @param $id integer
+     * @return string
+     */
     public function actionUpdate($id)
     {
-
         $model = $this->findModel($id);
+        $this->saveModel($model);
+        return $this->render('update',['model' => $model]);
+    }
 
+    /**
+     * @param $model Word
+     * @return \yii\web\Response
+     */
+    private function saveModel($model)
+    {
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $accentService = new AccentService(['word' => $model]);
             $accentService->replace(Yii::$app->request->post('checkaccent'));
             return $this->redirect(['index']);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
         }
     }
 
+    /**
+     * @param $id integer
+     * @return \yii\web\Response
+     */
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
@@ -90,6 +100,10 @@ class SiteController extends Controller
         }
     }
 
+
+    /**
+     * @return string
+     */
     public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {
@@ -106,6 +120,11 @@ class SiteController extends Controller
         }
     }
 
+
+    /**
+     * @param $id integer
+     * @return \yii\web\Response
+     */
     public function actionLogout()
     {
         Yii::$app->user->logout();

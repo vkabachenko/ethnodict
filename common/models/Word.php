@@ -29,6 +29,7 @@ class Word extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['id'], 'safe', 'on' => 'variant'],
             [['title'], 'required'],
             [['title'], 'string', 'max' => 40]
         ];
@@ -59,7 +60,7 @@ class Word extends \yii\db\ActiveRecord
     public function beforeSave($insert)
     {
         if (parent::beforeSave($insert)) {
-            $this->title = Utf8::mb_ucfirst(Utf8::mb_lowCase($this->title));
+            $this->title = Utf8::mb_ucfirst($this->title);
             return true;
         } else {
             return false;
