@@ -1,58 +1,52 @@
-This directory contains various tests for the advanced applications.
+Before
+------
 
-Tests in `codeception` directory are developed with [Codeception PHP Testing Framework](http://codeception.com/).
+Prepare test database for functional and acceptance tests
 
-After creating and setting up the advanced application, follow these steps to prepare for the tests:
+```
+cd tests/codeception
+php bin/yii fakedb/make
+```
 
-1. Install Codeception if it's not yet installed:
+Then make sql dump, name it as `dump.sql` and copy to `tests/codeception/common/_data`
 
-   ```
-   composer global require "codeception/codeception=2.0.*" "codeception/specify=*" "codeception/verify=*"
-   ```
 
-   If you've never used Composer for global packages run `composer global status`. It should output:
+Run Unit test
+--------------
 
-   ```
-   Changed current directory to <directory>
-   ```
+```
+cd tests/codeception/backend
+codecept run unit
+```
 
-   Then add `<directory>/vendor/bin` to you `PATH` environment variable. Now you're able to use `codecept` from command
-   line globally.
+Run Functional test
+--------------------
 
-2. Install faker extension by running the following from template root directory where `composer.json` is:
+```
+cd tests/codeception/backend
+codecept run functional
+```
 
-   ```
-   composer require --dev yiisoft/yii2-faker:*
-   ```
+Run Acceptance test
+--------------------
 
-3. Create `yii2_advanced_tests` database then update it by applying migrations:
+Open 3 copies of terminal session
 
-   ```
-   codeception/bin/yii migrate
-   ```
+In first start webserver from the root directory:
 
-4. In order to be able to run acceptance tests you need to start a webserver. The simplest way is to use PHP built in
-   webserver. In the root directory where `common`, `frontend` etc. are execute the following:
+```
+php -S localhost:8080
+```
 
-   ```
-   php -S localhost:8080
-   ```
+In second launch selenium webdriver:
 
-5. Now you can run the tests with the following commands, assuming you are in the `tests/codeception` directory:
+```
+selenium-server-standalone
+```
 
-   ```
-   # frontend tests
-   cd frontend
-   codecept build
-   codecept run
-   
-   # backend tests
-   
-   cd backend
-   codecept build
-   codecept run
-    
-   # etc.
-   ```
+In third run test:
 
-  If you already have run `codecept build` for each application, you can skip that step and run all tests by a single `codecept run`.
+```
+cd tests/codeception/backend
+codecept run acceptance
+```

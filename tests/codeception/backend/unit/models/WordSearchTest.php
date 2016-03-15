@@ -3,11 +3,11 @@
 namespace tests\codeception\backend\unit\models;
 
 use Codeception\Specify;
-use tests\codeception\backend\unit\DbTestCase;
+use tests\codeception\backend\unit\TestCase;
 use tests\codeception\common\fixtures\WordFixture;
 use backend\models\WordSearch;
 
-class WordSearchTest extends DbTestCase {
+class WordSearchTest extends TestCase {
 
     /* @var $_model WordSearch */
     use Specify;
@@ -79,11 +79,8 @@ class WordSearchTest extends DbTestCase {
     public function fixtures()
     {
         return [
-            [
                 'class' => WordFixture::className(),
-                'dataFile' => '@tests/codeception/common/unit/fixtures/data/models/word.php'
-            ],
-        ];
+               ];
     }
 
 } 

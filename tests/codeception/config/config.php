@@ -5,12 +5,12 @@
 return [
     'language' => 'en-US',
     'controllerMap' => [
-        'fixture' => [
-            'class' => 'yii\faker\FixtureController',
-            'fixtureDataPath' => '@tests/codeception/common/fixtures/data',
-            'templatePath' => '@tests/codeception/common/templates/fixtures',
-            'namespace' => 'tests\codeception\common\fixtures',
-        ],
+        'fakedb' => [
+            'class' => 'tests\codeception\common\_support\FakeDbController',
+            'countWords' => 25,
+            'countAccents' => 2,
+            'countVariants' => 2,
+        ]
     ],
     'components' => [
         'db' => [

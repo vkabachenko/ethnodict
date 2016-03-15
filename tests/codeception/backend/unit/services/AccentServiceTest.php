@@ -3,12 +3,12 @@
 namespace tests\codeception\backend\unit\services;
 
 use common\models\Word;
-use tests\codeception\backend\unit\DbTestCase;
+use tests\codeception\backend\unit\TestCase;
 use tests\codeception\common\fixtures\WordAccentFixture;
 use tests\codeception\common\fixtures\WordFixture;
 use backend\services\AccentService;
 
-class AccentServiceTest extends DbTestCase {
+class AccentServiceTest extends TestCase {
 
     /* @var $_service AccentService */
     /* @var $_model Word */
@@ -78,15 +78,9 @@ class AccentServiceTest extends DbTestCase {
     public function fixtures()
     {
         return [
-            [
-                'class' => WordFixture::className(),
-                'dataFile' => '@tests/codeception/common/unit/fixtures/data/models/word.php'
-            ],
-            [
-                'class' => WordAccentFixture::className(),
-                'dataFile' => '@tests/codeception/common/unit/fixtures/data/models/wordAccent.php'
-            ],
-        ];
+                WordFixture::className(),
+                WordAccentFixture::className(),
+               ];
     }
 
 } 

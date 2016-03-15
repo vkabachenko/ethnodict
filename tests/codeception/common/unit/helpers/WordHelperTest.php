@@ -3,11 +3,11 @@
 namespace tests\codeception\common\unit\helpers;
 
 use common\models\Word;
-use tests\codeception\common\unit\DbTestCase;
+use tests\codeception\common\unit\TestCase;
 use tests\codeception\common\fixtures\WordFixture;
 use common\helpers\WordHelper;
 
-class WordHelperTest  extends DbTestCase
+class WordHelperTest  extends TestCase
 {
 
     public function testChanged()
@@ -30,10 +30,7 @@ class WordHelperTest  extends DbTestCase
     public function fixtures()
     {
         return [
-            [
-                'class' => WordFixture::className(),
-                'dataFile' => '@tests/codeception/common/unit/fixtures/data/models/word.php'
-            ],
+            WordFixture::className(),
         ];
     }
 } 
