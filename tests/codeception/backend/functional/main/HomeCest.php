@@ -1,10 +1,11 @@
 <?php
 namespace tests\codeception\backend\main;
+
 use common\models\Word;
 use tests\codeception\backend\FunctionalTester;
-use tests\codeception\backend\_pages\DelWordPage;
-use tests\codeception\backend\_pages\CreateWordPage;
-use tests\codeception\backend\_pages\UpdateWordPage;
+use tests\codeception\backend\_pages\main\DelWordPage;
+use tests\codeception\backend\_pages\main\CreateWordPage;
+use tests\codeception\backend\_pages\main\UpdateWordPage;
 
 class HomeCest
 {

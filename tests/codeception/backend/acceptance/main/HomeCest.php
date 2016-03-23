@@ -4,7 +4,7 @@ namespace tests\codeception\backend\main;
 use common\models\WordAccent;
 use tests\codeception\backend\AcceptanceTester;
 use common\models\Word;
-use tests\codeception\backend\_pages\UpdateWordPage;
+use tests\codeception\backend\_pages\main\UpdateWordPage;
 
 class HomeCest
 {
