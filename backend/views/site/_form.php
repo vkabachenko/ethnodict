@@ -15,6 +15,8 @@ use yii\widgets\ActiveForm;
     'id' => 'word-title'
 ]) ?>
 
+<?= $form->field($model, 'description')->textarea(); ?>
+
 <?= $this->render('_accent',['model' => $model]); ?>
 
     <div class="form-group">

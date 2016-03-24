@@ -10,6 +10,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $title
+ * @property string $description
  *
  * @property WordAccent[] $wordAccents
  */
@@ -31,7 +32,8 @@ class Word extends \yii\db\ActiveRecord
         return [
             [['id'], 'safe', 'on' => 'variant'],
             [['title'], 'required'],
-            [['title'], 'string', 'max' => 40]
+            [['title'], 'string', 'max' => 40],
+            ['description', 'safe', 'on' => 'default']
         ];
     }
 
@@ -43,6 +45,7 @@ class Word extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'title' => 'Наименование',
+            'description' => 'Описание',
         ];
     }
 

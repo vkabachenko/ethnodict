@@ -16,7 +16,10 @@ use yii\web\JsExpression;
 ?>
     <?php $form = ActiveForm::begin([
         'enableAjaxValidation' => true,
-        'validationUrl' => ['validate','id_word' => $model->id_word],
+        'validationUrl' => [
+            'validate',
+            'id_word' => $model->id_word],
+            'id' => $model->id,
         ]
 ); ?>
 

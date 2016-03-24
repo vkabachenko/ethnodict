@@ -169,9 +169,16 @@ class VariantController extends Controller
      * @return array
      */
 
-    public function actionValidate($id_word)
+    public function actionValidate($id_word, $id = null)
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
+
+        if (WordVariant::find()->where([
+            'id' => $id,
+            'id_word' => $id_word,
+        ])->exists()) {
+            return [];
+        }
         $model = new WordVariant();
         $variant = new Word(['scenario' => 'variant']);
         if ($variant->load(Yii::$app->request->post())
