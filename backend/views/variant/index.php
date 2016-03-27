@@ -5,7 +5,7 @@ use yii\grid\GridView;
 use common\helpers\VariantTypeHelper;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\WordSearch */
+/* @var $searchModel backend\models\WordVariantSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $word common\models\Word */
 

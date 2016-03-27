@@ -33,7 +33,7 @@ class VariantController extends Controller
     }
 
     /**
-     * @param $id integer
+     * @param $id_word integer
      * @return string
      */
 

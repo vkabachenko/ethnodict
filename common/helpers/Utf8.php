@@ -50,7 +50,7 @@ class Utf8 {
     *     Урезать строку до необходимой длины
     */
 
-    public static function mb_trunc($str,$len,$encoding = 'utf-8')
+    public static function mb_trunc($str, $len, $encoding = 'utf-8')
     {
 
         if ($len >= mb_strlen($str,$encoding)) {
@@ -61,6 +61,7 @@ class Utf8 {
         }
 
     }
+
 
 /*
 *     https://gist.github.com/stemar/8287074

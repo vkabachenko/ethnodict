@@ -30,7 +30,7 @@ $this->title = 'Администрирование';
         ],
         [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{update}{delete}{variant}',
+            'template' => '{update}{delete}{variant}{citation}',
             'buttons' => [
                 'variant' => function ($url, $model, $key) {
                         return Html::a('<span class="glyphicon
@@ -40,7 +40,16 @@ $this->title = 'Администрирование';
                             'data-toggle' => 'tooltip',
                             'title' => 'Варианты',
                         ]);
-                    }
+                    },
+                'citation' => function ($url, $model, $key) {
+                        return Html::a('<span class="glyphicon
+                        glyphicon-copyright-mark"></span>',
+                            ['citation/index', 'id' => $model->id],
+                            [
+                                'data-toggle' => 'tooltip',
+                                'title' => 'Цитатыы',
+                            ]);
+                    },
             ],
             'header' => 'Действия'
         ],
