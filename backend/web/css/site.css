@@ -94,3 +94,8 @@ a.desc:after {
     color: red;
     background-color: yellow;
 }
+
+.ui-autocomplete a span {
+    margin-left:5px;
+    font-size: 0.7em;
+}

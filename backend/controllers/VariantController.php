@@ -12,6 +12,7 @@ use yii\web\Response;
 use backend\services\AccentService;
 use common\helpers\WordHelper;
 use yii\widgets\ActiveForm;
+use common\helpers\Utf8;
 
 class VariantController extends Controller
 {
@@ -144,7 +145,7 @@ class VariantController extends Controller
         $transfer = [];
         foreach ($words as $word) {
             $transfer[] = [
-                'label' => Yii::$app->accent->full($word),
+                'label' => Yii::$app->accent->full($word).'<span>'.Utf8::mb_trunc($word->description,50).'</span>',
                 'value' => $word->title,
                 'id' => $word->id
             ];

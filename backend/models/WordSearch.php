@@ -16,7 +16,7 @@ class WordSearch extends Word
     public function rules()
     {
         return [
-            [['title'], 'safe'],
+            [['title','description'], 'safe'],
         ];
     }
 
@@ -44,7 +44,7 @@ class WordSearch extends Word
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => [
-                'defaultOrder' => ['title' => SORT_ASC,]
+                'defaultOrder' => ['title' => SORT_ASC,'description' => SORT_ASC,]
             ],
             'pagination' => [
                 'pageSize' => Yii::$app->params['word']['pageSize'],
@@ -57,6 +57,7 @@ class WordSearch extends Word
         }
 
         $query->andFilterWhere(['like', 'title', $this->title]);
+        $query->andFilterWhere(['like', 'description', $this->description]);
         return $dataProvider;
     }
 }

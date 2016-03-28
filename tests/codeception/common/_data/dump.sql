@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 24, 2016 at 08:15 PM
+-- Generation Time: Mar 28, 2016 at 11:27 AM
 -- Server version: 5.5.47
 -- PHP Version: 5.4.45-3+deb.sury.org~precise+1
 
@@ -41,7 +41,28 @@ INSERT INTO `etno_migration` (`version`, `apply_time`) VALUES
 ('m160130_172105_create_word_table', 1457780628),
 ('m160130_174749_create_word_accent_table', 1457780628),
 ('m160212_102146_create_word_variants_table', 1457780630),
-('m160324_080522_update_word_table', 1458839607);
+('m160324_080522_update_word_table', 1458839607),
+('m160324_175311_create_region_table', 1459153624),
+('m160325_082304_create_citation_table', 1459153625);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `etno_region`
+--
+
+CREATE TABLE IF NOT EXISTS `etno_region` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `etno_region`
+--
+
+INSERT INTO `etno_region` (`id`, `name`) VALUES
+(1, 'Псковский');
 
 -- --------------------------------------------------------
 
@@ -77,38 +98,38 @@ CREATE TABLE IF NOT EXISTS `etno_word` (
   `title` varchar(40) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=66 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=116 ;
 
 --
 -- Dumping data for table `etno_word`
 --
 
 INSERT INTO `etno_word` (`id`, `title`, `description`) VALUES
-(41, 'Pariatur animi libero et.', NULL),
-(42, 'Quo odit et quis nobis.', NULL),
-(43, 'Aperiam quis a cum similique iusto sed.', NULL),
-(44, 'Quae est impedit et illum.', NULL),
-(45, 'Maxime consequatur in quas velit.', NULL),
-(46, 'Voluptatem ad assumenda eveniet et.', NULL),
-(47, 'Est eius nobis aut voluptatem ut.', NULL),
-(48, 'Et dolores dolorem in quia vel dolor.', NULL),
-(49, 'Ad quidem non earum eum ut et quam.', NULL),
-(50, 'Labore eum ducimus eos.', NULL),
-(51, 'Repellendus voluptatem deleniti et.', NULL),
-(52, 'Dicta maiores velit blanditiis quo.', NULL),
-(53, 'Sint error accusamus magni commodi.', NULL),
-(54, 'Iste quo porro earum illo totam.', NULL),
-(55, 'Unde eos inventore quo a.', NULL),
-(56, 'Atque est dolorum architecto sapiente.', NULL),
-(57, 'Non numquam autem impedit molestiae ab.', NULL),
-(58, 'Animi recusandae est et.', NULL),
-(59, 'Sapiente veniam aliquid vel.', NULL),
-(60, 'Quas repellat ad architecto et enim ad.', NULL),
-(61, 'Voluptas labore rerum optio odio.', NULL),
-(62, 'Sint rem placeat facilis et et qui.', NULL),
-(63, 'Optio est ut voluptatem quibusdam.', NULL),
-(64, 'Ab quia totam nesciunt.', NULL),
-(65, 'Nam culpa vero facilis ex est.', NULL);
+(91, 'Voluptatem a autem deserunt inventore.', NULL),
+(92, 'Repudiandae velit sunt facere.', NULL),
+(93, 'Error odio doloribus ipsam et error.', NULL),
+(94, 'Dicta dicta occaecati dolor occaecati.', NULL),
+(95, 'Enim ipsam alias qui enim fuga odit.', NULL),
+(96, 'Nesciunt eos quo praesentium aliquam.', NULL),
+(97, 'Est optio aut laboriosam.', NULL),
+(98, 'Aut quia ut repellendus reprehenderit.', NULL),
+(99, 'Nulla et nulla aut error.', NULL),
+(100, 'Architecto repellat cum qui iusto.', NULL),
+(101, 'Qui quis eum minima qui.', NULL),
+(102, 'Non vitae ut quia.', NULL),
+(103, 'Ipsam et ipsa dolores ut aut in.', NULL),
+(104, 'Sunt voluptas dolorem velit itaque.', NULL),
+(105, 'Alias dolorem sunt doloribus.', NULL),
+(106, 'Sed perspiciatis voluptas et et.', NULL),
+(107, 'Quis quia ipsa odio enim non quasi ea.', NULL),
+(108, 'Eligendi adipisci aut ipsa quas.', NULL),
+(109, 'Eveniet ducimus dolor quidem.', NULL),
+(110, 'Ut saepe inventore id soluta quo iste.', NULL),
+(111, 'Magni labore eos sit quis itaque.', NULL),
+(112, 'Impedit quas corrupti debitis enim.', NULL),
+(113, 'Sed eaque dolor maiores ut.', NULL),
+(114, 'Voluptatem ea quaerat nesciunt iure ad.', NULL),
+(115, 'Quod quis quis consequuntur quas.', NULL);
 
 -- --------------------------------------------------------
 
@@ -123,62 +144,79 @@ CREATE TABLE IF NOT EXISTS `etno_word_accent` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_word_position` (`id_word`,`accent_position`),
   KEY `id_word` (`id_word`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=130 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=229 ;
 
 --
 -- Dumping data for table `etno_word_accent`
 --
 
 INSERT INTO `etno_word_accent` (`id`, `id_word`, `accent_position`) VALUES
-(81, 41, 0),
-(82, 41, 10),
-(83, 42, 3),
-(84, 42, 20),
-(85, 43, 6),
-(86, 43, 35),
-(88, 44, 2),
-(87, 44, 10),
-(90, 45, 5),
-(89, 45, 23),
-(91, 46, 20),
-(92, 46, 26),
-(93, 47, 14),
-(94, 47, 32),
-(95, 48, 13),
-(96, 48, 27),
-(97, 49, 30),
-(99, 50, 1),
-(98, 50, 8),
-(101, 51, 7),
-(100, 51, 16),
-(102, 52, 5),
-(103, 52, 23),
-(104, 53, 23),
-(105, 53, 29),
-(107, 54, 1),
-(106, 54, 23),
-(109, 55, 0),
-(108, 55, 11),
-(111, 56, 28),
-(110, 56, 32),
-(113, 57, 0),
-(112, 57, 35),
-(115, 58, 19),
-(114, 58, 23),
-(117, 59, 4),
-(116, 59, 26),
-(118, 60, 8),
-(119, 60, 28),
-(121, 61, 17),
-(120, 61, 31),
-(123, 62, 6),
-(122, 62, 9),
-(125, 63, 22),
-(124, 63, 28),
-(126, 64, 16),
-(127, 64, 17),
-(128, 65, 0),
-(129, 65, 25);
+(180, 91, 4),
+(179, 91, 35),
+(182, 92, 15),
+(181, 92, 21),
+(183, 93, 22),
+(184, 93, 23),
+(186, 94, 10),
+(185, 94, 22),
+(187, 95, 9),
+(188, 95, 14),
+(189, 96, 3),
+(190, 96, 17),
+(191, 97, 4),
+(192, 97, 22),
+(194, 98, 1),
+(193, 98, 27),
+(196, 99, 7),
+(195, 99, 13),
+(197, 100, 11),
+(198, 100, 18),
+(199, 101, 5),
+(200, 101, 8),
+(202, 102, 0),
+(201, 102, 10),
+(204, 103, 8),
+(203, 103, 16),
+(206, 104, 22),
+(205, 104, 25),
+(207, 105, 2),
+(208, 105, 3),
+(209, 106, 5),
+(210, 106, 7),
+(211, 107, 1),
+(212, 107, 7),
+(214, 108, 19),
+(213, 108, 27),
+(216, 109, 4),
+(215, 109, 21),
+(218, 110, 14),
+(217, 110, 22),
+(219, 111, 5),
+(220, 111, 14),
+(222, 112, 8),
+(221, 112, 34),
+(223, 113, 8),
+(224, 113, 15),
+(225, 114, 7),
+(226, 114, 26),
+(228, 115, 10),
+(227, 115, 19);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `etno_word_citation`
+--
+
+CREATE TABLE IF NOT EXISTS `etno_word_citation` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_word` int(11) NOT NULL,
+  `fragment` text COLLATE utf8_unicode_ci,
+  `id_region` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_region` (`id_region`),
+  KEY `id_word` (`id_word`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -197,61 +235,63 @@ CREATE TABLE IF NOT EXISTS `etno_word_variant` (
   KEY `id_word` (`id_word`),
   KEY `id_variant` (`id_variant`),
   KEY `id_type` (`id_type`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=125 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=224 ;
 
 --
 -- Dumping data for table `etno_word_variant`
 --
 
 INSERT INTO `etno_word_variant` (`id`, `id_word`, `id_variant`, `id_type`, `comment`) VALUES
-(77, 41, 63, 2, 'Repellendus odit ratione ratione. Velit explicabo quo dicta in autem qui.'),
-(78, 41, 55, 5, 'Iusto quae cumque aliquid beatae ut.'),
-(79, 42, 44, 3, 'Quis non hic ut et qui minus qui autem. Unde hic accusantium et pariatur.'),
-(80, 42, 64, 1, 'Repudiandae ullam recusandae dolorum aut non vero.'),
-(81, 43, 51, 4, 'Magni exercitationem consequuntur et soluta officia alias.'),
-(82, 43, 58, 3, 'Corporis iusto minus aliquam culpa sint similique voluptatem.'),
-(83, 44, 52, 3, 'Reiciendis aut quaerat voluptatem animi occaecati.'),
-(84, 44, 46, 1, 'Sit quibusdam quos repellat quos asperiores.'),
-(85, 45, 57, 3, 'Voluptates ab veritatis animi exercitationem.'),
-(86, 45, 44, 3, 'Corrupti ipsam illo vero quaerat quia non reiciendis sunt.'),
-(87, 46, 56, 5, 'Culpa minus est dolorum ex. Iusto facere aut et a accusamus dolor eos.'),
-(88, 47, 57, 3, 'Et quia error autem. Enim est dolores quisquam sunt dolorem beatae enim.'),
-(89, 47, 55, 3, 'Sint est nobis qui ullam facere quo.'),
-(90, 48, 50, 5, 'Pariatur assumenda id aliquam nihil esse qui.'),
-(91, 48, 47, 3, 'Commodi aut dolores qui. Sed ut fuga assumenda repudiandae ducimus autem quia.'),
-(92, 49, 61, 1, 'Voluptatibus unde consequuntur quasi labore vel illum.'),
-(93, 49, 52, 3, 'Incidunt tempora non ut animi.'),
-(94, 50, 51, 5, 'Optio itaque temporibus voluptatibus occaecati sed.'),
-(95, 50, 54, 2, 'Inventore quo assumenda fugit praesentium quod omnis.'),
-(96, 51, 65, 2, 'Officia illo delectus tempore nostrum et aut.'),
-(97, 51, 46, 2, 'Maiores ullam eligendi et quo.'),
-(98, 52, 53, 2, 'Ullam nostrum illum consectetur ipsum ipsum autem.'),
-(99, 53, 63, 1, 'Voluptatem aut corrupti at cum maiores qui unde. Officia tenetur et eveniet et.'),
-(100, 53, 44, 2, 'Incidunt delectus nesciunt repudiandae illo veritatis.'),
-(101, 54, 43, 2, 'Ullam fugiat totam aut itaque et vitae numquam.'),
-(102, 54, 49, 2, 'Dignissimos blanditiis veniam culpa excepturi velit non ut.'),
-(103, 55, 59, 5, 'Sit repellendus nostrum veniam odit sed unde.'),
-(104, 55, 61, 3, 'Sit et eos sed aperiam placeat.'),
-(105, 56, 50, 1, 'Autem esse sint qui explicabo. Error qui quis tempore dolorum suscipit.'),
-(106, 56, 59, 4, 'Maxime non dolor nesciunt voluptate sit omnis.'),
-(107, 57, 53, 2, 'Eveniet enim explicabo labore non ea recusandae.'),
-(108, 57, 51, 4, 'Delectus et nemo vitae et voluptas enim hic. Qui qui illum impedit minus.'),
-(109, 58, 54, 2, 'Ea eius cum minima et sint.'),
-(110, 58, 44, 3, 'Itaque ut vel ut aut tempora necessitatibus qui.'),
-(111, 59, 49, 4, 'Quod reprehenderit amet suscipit.'),
-(112, 59, 62, 3, 'Neque voluptatem odio expedita et.'),
-(113, 60, 42, 2, 'Voluptates enim maxime molestias molestiae id odio.'),
-(114, 60, 47, 4, 'Ex voluptatibus amet maxime et velit consequuntur molestiae.'),
-(115, 61, 49, 2, 'Laboriosam deleniti doloribus fuga nisi minus commodi pariatur.'),
-(116, 61, 62, 4, 'Qui sit quos consequatur et id iusto. Vitae ullam veritatis porro dolorum.'),
-(117, 62, 45, 3, 'Excepturi velit perferendis ullam distinctio fugiat maiores et.'),
-(118, 62, 51, 1, 'Molestiae fugiat odit et adipisci. Et qui iste temporibus mollitia doloribus.'),
-(119, 63, 59, 1, 'Consectetur provident mollitia voluptates nesciunt ipsa minus cum.'),
-(120, 63, 64, 4, 'Architecto dolores dolorem ut. Id est aliquam et qui culpa aperiam.'),
-(121, 64, 53, 2, 'Magnam nulla ratione nam. Nesciunt culpa amet aut laborum dolorum tenetur.'),
-(122, 64, 65, 1, 'Deleniti aut dolores vel qui perferendis eum ipsam.'),
-(123, 65, 62, 2, 'Qui et voluptas nesciunt et rerum.'),
-(124, 65, 57, 3, 'Deserunt aut porro et maxime maiores. Nulla dolores doloremque maxime odio.');
+(174, 91, 113, 3, 'Autem quae iusto est qui. Sit laborum aut laborum accusamus quibusdam.'),
+(175, 91, 115, 4, 'Quia omnis voluptatibus voluptatem harum voluptas quae sint.'),
+(176, 92, 98, 3, 'Accusantium laudantium ratione incidunt qui et atque.'),
+(177, 92, 103, 3, 'Ratione corrupti molestias at consectetur rerum ipsum.'),
+(178, 93, 95, 3, 'Numquam qui repudiandae tempora corporis illum dicta. Est ex qui magnam quae.'),
+(179, 93, 105, 4, 'Dolorem adipisci libero doloremque accusamus.'),
+(180, 94, 111, 3, 'Suscipit rerum sint non voluptatibus. Amet nesciunt libero sit quia id quo.'),
+(181, 94, 113, 3, 'Eveniet illo explicabo exercitationem officia commodi beatae.'),
+(182, 95, 95, 3, 'Repellendus omnis in est dicta reprehenderit quis.'),
+(183, 95, 115, 5, 'Error consequatur cumque sunt est et vero incidunt.'),
+(184, 96, 91, 2, 'Qui voluptatem ratione quod eum repellat et tenetur accusamus.'),
+(185, 96, 113, 4, 'Et sed est earum velit.'),
+(186, 97, 103, 3, 'Et excepturi sed adipisci quae voluptatem.'),
+(187, 97, 114, 4, 'Vitae qui voluptatem et facilis ullam dicta rem voluptas.'),
+(188, 98, 95, 3, 'Praesentium eum sit aut quibusdam ullam labore.'),
+(189, 98, 112, 3, 'Et et voluptatem voluptatem voluptas sed.'),
+(190, 99, 99, 1, 'Odit temporibus harum cumque unde. Corrupti tempora ut quos officia voluptas.'),
+(191, 99, 111, 5, 'Neque necessitatibus reiciendis alias iusto nemo.'),
+(192, 100, 97, 1, 'Et harum minus quos eum voluptatem officiis placeat.'),
+(193, 100, 91, 3, 'Magnam necessitatibus autem magni.'),
+(194, 101, 104, 3, 'Officiis aspernatur similique deleniti perspiciatis quibusdam laboriosam.'),
+(195, 101, 111, 4, 'Aperiam dolor qui praesentium aliquam. Asperiores unde eligendi et aut.'),
+(196, 102, 95, 4, 'Eligendi vero at sit modi. Quasi autem unde est culpa repellendus.'),
+(197, 102, 93, 1, 'Nisi voluptatibus ea ut. Alias quibusdam hic atque quaerat.'),
+(198, 103, 107, 3, 'Rem alias ut vitae voluptates id. Et harum vitae quidem.'),
+(199, 103, 111, 2, 'Deserunt corrupti aperiam voluptatibus.'),
+(200, 104, 97, 5, 'Assumenda hic quasi accusantium quas. Voluptatem et ducimus quo aut et vero.'),
+(201, 104, 95, 5, 'Ullam quo qui dolores. Numquam quas sed dolorem voluptates porro voluptas vero.'),
+(202, 105, 93, 4, 'Eum dolorem itaque aut nesciunt officiis et sed.'),
+(203, 105, 101, 5, 'Dolor commodi tempora unde saepe quibusdam. Ut rerum nam autem incidunt.'),
+(204, 106, 98, 3, 'Natus aspernatur quo et libero.'),
+(205, 106, 105, 3, 'Aut rerum sint eligendi aut in. Impedit pariatur ut a aut eos.'),
+(206, 107, 114, 5, 'Sint magnam sit dolor nemo consequuntur.'),
+(207, 107, 110, 1, 'Ut fuga eum temporibus quo quasi assumenda corporis.'),
+(208, 108, 98, 3, 'In officia delectus in neque voluptates cumque. Sed est fuga et est rem et et.'),
+(209, 108, 97, 4, 'Dolor laboriosam porro illum accusamus nihil est omnis.'),
+(210, 109, 111, 3, 'Tenetur illum quasi sapiente laboriosam repudiandae et.'),
+(211, 109, 103, 1, 'Omnis culpa nemo sit sunt suscipit.'),
+(212, 110, 115, 2, 'Et quia voluptatem est repudiandae quia qui ipsum enim.'),
+(213, 110, 94, 4, 'Vitae ut deleniti quis necessitatibus rerum necessitatibus neque.'),
+(214, 111, 91, 5, 'Dolorem repellat rerum veniam impedit assumenda vitae et sit.'),
+(215, 111, 103, 2, 'Omnis ipsa quas aut libero provident nam. Ipsum dolores cum necessitatibus aut.'),
+(216, 112, 105, 2, 'Velit placeat adipisci vel id culpa eaque aut.'),
+(217, 112, 91, 1, 'Quaerat pariatur asperiores sed dolorem nihil labore et voluptas.'),
+(218, 113, 111, 1, 'Voluptatibus ratione et officiis sit harum.'),
+(219, 113, 106, 1, 'Qui consequatur eius sint consequatur laboriosam quia eaque.'),
+(220, 114, 100, 2, 'Ut amet consequatur ipsa. Dolor ut et rerum facilis.'),
+(221, 114, 95, 3, 'Quia est reprehenderit velit et ullam sint. Est magnam ut eveniet.'),
+(222, 115, 111, 4, 'Corporis quibusdam at ea eligendi ut a. Sit quibusdam aut aut sequi fugiat.'),
+(223, 115, 99, 1, 'Sequi recusandae exercitationem cupiditate ea laudantium.');
 
 --
 -- Constraints for dumped tables
@@ -264,12 +304,19 @@ ALTER TABLE `etno_word_accent`
   ADD CONSTRAINT `word_accent_word` FOREIGN KEY (`id_word`) REFERENCES `etno_word` (`id`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `etno_word_citation`
+--
+ALTER TABLE `etno_word_citation`
+  ADD CONSTRAINT `citation_region` FOREIGN KEY (`id_region`) REFERENCES `etno_region` (`id`) ON DELETE SET NULL,
+  ADD CONSTRAINT `citation_word` FOREIGN KEY (`id_word`) REFERENCES `etno_word` (`id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `etno_word_variant`
 --
 ALTER TABLE `etno_word_variant`
-  ADD CONSTRAINT `type_word_variant` FOREIGN KEY (`id_type`) REFERENCES `etno_variant_type` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `main_word_variant` FOREIGN KEY (`id_word`) REFERENCES `etno_word` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `other_word_variant` FOREIGN KEY (`id_variant`) REFERENCES `etno_word` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `other_word_variant` FOREIGN KEY (`id_variant`) REFERENCES `etno_word` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `type_word_variant` FOREIGN KEY (`id_type`) REFERENCES `etno_variant_type` (`id`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

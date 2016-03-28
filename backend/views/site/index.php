@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use common\helpers\Utf8;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\WordSearch */
@@ -24,8 +25,14 @@ $this->title = 'Администрирование';
         [
             'attribute' => 'title',
             'format' => 'raw',
-            'value' => function($model, $key, $index, $column) {
+            'value' => function($model) {
                     return Yii::$app->accent->full($model);
+                }
+        ],
+        [
+            'attribute' => 'description',
+            'value' => function($model) {
+                    return Utf8::mb_trunc($model->description,60);
                 }
         ],
         [
