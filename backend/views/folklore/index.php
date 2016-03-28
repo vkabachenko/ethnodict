@@ -4,17 +4,17 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\RegionSearch */
+/* @var $searchModel backend\models\FolkloreSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Районы';
+$this->title = 'Типы фольклора';
 
 ?>
 
-<h1>Список районов</h1>
+<h1>Список типов фольклора</h1>
 
 <p>
-    <?= Html::a('Новый район', ['create'], ['class' => 'btn btn-success']) ?>
+    <?= Html::a('Новый тип фольклора', ['create'], ['class' => 'btn btn-success']) ?>
 </p>
 
 <?= GridView::widget([
