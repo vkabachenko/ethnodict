@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use common\helpers\VariantTypeHelper;
+use common\models\VariantType;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\WordVariantSearch */
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = 'Варианты';
                     return $model->type->name;
                 },
             'filter' => Html::activeDropDownList($searchModel, 'id_type',
-                    VariantTypeHelper::typesArray(),
+                    VariantType::find()->select(['name','id'])->orderBy('name')->indexBy('id')->column(),
                     ['prompt' => 'Поиск','class' => 'form-control']),
         ],
         [

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use common\models\Region;
+use common\models\Folklore;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -10,6 +11,9 @@ use yii\widgets\ActiveForm;
 
 ?>
     <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'id_folklore')
+    ->dropDownList(Folklore::find()->select(['name','id'])->orderBy('name')->indexBy('id')->column()); ?>
 
     <?= $form->field($model, 'fragment')->textarea(); ?>
 

@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
-use common\helpers\VariantTypeHelper;
+use common\models\VariantType;
 use yii\widgets\ActiveForm;
 use yii\jui\AutoComplete;
 use common\models\Word;
@@ -24,7 +24,7 @@ use yii\web\JsExpression;
 ); ?>
 
     <?= $form->field($model, 'id_type')
-    ->dropDownList(VariantTypeHelper::typesArray()); ?>
+    ->dropDownList(VariantType::find()->select(['name','id'])->orderBy('name')->indexBy('id')->column()); ?>
 
     <?= $form->field($variant, 'id')
     ->hiddenInput(['id' => 'variant-id'])

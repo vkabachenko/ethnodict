@@ -4,12 +4,12 @@ namespace backend\controllers;
 
 use Yii;
 use yii\web\Controller;
-use backend\models\WordCitationSearch;
-use common\models\WordCitation;
+use backend\models\WordFolkloreSearch;
+use common\models\WordFolklore;
 use common\models\Word;
 use yii\web\NotFoundHttpException;
 
-class CitationController extends Controller
+class WordFolkloreController extends Controller
 {
 
     /**
@@ -19,7 +19,7 @@ class CitationController extends Controller
     public function actionIndex($id)
     {
         $word = Word::findOne($id);
-        $searchModel = new WordCitationSearch();
+        $searchModel = new WordFolkloreSearch();
         $dataProvider = $searchModel->search($id, Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -30,13 +30,13 @@ class CitationController extends Controller
     }
 
     /**
-     * Creates a new WordCitation model.
+     * Creates a new Folklore model.
      * @param $id_word integer
      * @return mixed
      */
     public function actionCreate($id_word)
     {
-        $model = new WordCitation(['id_word' => $id_word]);
+        $model = new WordFolklore(['id_word' => $id_word]);
         $word = Word::findOne($id_word);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -75,7 +75,7 @@ class CitationController extends Controller
      */
     public function actionDelete($id)
     {
-        /* @var $model WordCitation */
+        /* @var $model WordFolklore */
         $model = $this->findModel($id);
         $id_word = $model->id_word;
         $model->delete();
@@ -85,12 +85,12 @@ class CitationController extends Controller
 
     /**
      * @param integer $id
-     * @return WordCitation the loaded model
+     * @return WordFolklore the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = WordCitation::findOne($id)) !== null) {
+        if (($model = WordFolklore::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
