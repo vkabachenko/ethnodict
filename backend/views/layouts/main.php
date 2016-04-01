@@ -38,6 +38,7 @@ AppAsset::register($this);
         ['label' => 'Главная', 'url' => ['/site/index'],],
         ['label' => 'Районы', 'url' => ['/region/index'],],
         ['label' => 'Фольклор', 'url' => ['/folklore/index'],],
+        ['label' => 'Источники', 'url' => ['/literary-source/index'],],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Войти', 'url' => ['/site/login']];
