@@ -37,7 +37,7 @@ $this->title = 'Администрирование';
         ],
         [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{update}{delete}{variant}{citation}{folklore}',
+            'template' => '{update}{delete}{variant}{citation}{folklore}{etymology}',
             'buttons' => [
                 'variant' => function ($url, $model, $key) {
                         return Html::a('<span class="glyphicon
@@ -64,6 +64,15 @@ $this->title = 'Администрирование';
                             [
                                 'data-toggle' => 'tooltip',
                                 'title' => 'Фольклор',
+                            ]);
+                    },
+                'etymology' => function ($url, $model, $key) {
+                        return Html::a('<span class="glyphicon
+                        glyphicon-book"></span>',
+                            ['etymology/index', 'id' => $model->id],
+                            [
+                                'data-toggle' => 'tooltip',
+                                'title' => 'Этимология',
                             ]);
                     },
             ],
