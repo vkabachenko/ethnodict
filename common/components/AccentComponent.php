@@ -16,8 +16,7 @@ class AccentComponent extends Component {
     public function positions($word)
     {
         $posArray = [];
-        $wordAccents = WordAccent::find()->where(['id_word' => $word->id])->all();
-        foreach ($wordAccents as $wordAccent ) {
+        foreach ($word->wordAccents as $wordAccent ) {
             $posArray[] = $wordAccent->accent_position;
         }
         return $posArray;

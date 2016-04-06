@@ -39,7 +39,7 @@ class WordSearch extends Word
      */
     public function search($params)
     {
-        $query = Word::find();
+        $query = Word::find()->with('wordAccents');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
