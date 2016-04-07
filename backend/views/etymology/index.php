@@ -48,8 +48,19 @@ $this->params['breadcrumbs'][] = 'Этимология';
             'source_addition',
         [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{update}{delete}',
-            'header' => 'Действия'
+            'template' => '{update}{delete}{citation}',
+            'buttons' => [
+                'citation' => function ($url, $model, $key) {
+                        return Html::a('<span class="glyphicon
+                        glyphicon-copyright-mark"></span>',
+                            ['etymology-citation/index', 'id' => $model->id],
+                            [
+                                'data-toggle' => 'tooltip',
+                                'title' => 'Цитаты',
+                            ]);
+                    },
+                ],
+                'header' => 'Действия'
         ],
     ],
 ]); ?>
