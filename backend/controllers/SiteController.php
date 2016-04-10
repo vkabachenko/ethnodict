@@ -34,6 +34,7 @@ class SiteController extends Controller
     {
         $searchModel = new WordSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        Yii::$app->session->set('page',Yii::$app->request->get('page'));
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -71,7 +72,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             $accentService = new AccentService(['word' => $model]);
             $accentService->replace(Yii::$app->request->post('checkaccent'));
-            return $this->redirect(['index']);
+            return $this->redirect(['index','page' => Yii::$app->session->get('page')]);
         }
     }
 
