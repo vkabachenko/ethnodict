@@ -6,9 +6,13 @@ use Yii;
 use common\models\Word;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use yii\db\Expression;
+use backend\models\traits\OperandSearchTrait;
+
 
 class WordSearch extends Word
 {
+    use OperandSearchTrait;
 
     /**
      * @inheritdoc
@@ -16,7 +20,15 @@ class WordSearch extends Word
     public function rules()
     {
         return [
-            [['title','description'], 'safe'],
+            [
+                [
+                    'title',
+                    'description',
+                    'variants_count',
+                    'citations_count',
+                    'folklors_count',
+                    'etymologies_count',
+                ], 'safe'],
         ];
     }
 
@@ -39,12 +51,35 @@ class WordSearch extends Word
      */
     public function search($params)
     {
-        $query = Word::find()->with('wordAccents');
+
+        $query = Word::find()->with('wordAccents')
+            ->joinWith([
+                'wordVariants',
+                'wordCitations',
+                'wordFolklors',
+                'wordEtymologies',
+            ],false)
+            ->select([
+                '{{%word}}.*',
+                'variants_count' => new Expression('COUNT(DISTINCT {{%word_variant}}.id)'),
+                'citations_count' => new Expression('COUNT(DISTINCT {{%word_citation}}.id)'),
+                'folklors_count' => new Expression('COUNT(DISTINCT {{%word_folklore}}.id)'),
+                'etymologies_count' => new Expression('COUNT(DISTINCT {{%word_etymology}}.id)'),
+            ])
+            ->groupBy('{{%word}}.id');
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'sort' => [
-                'defaultOrder' => ['title' => SORT_ASC,'description' => SORT_ASC,]
+                'defaultOrder' => ['title' => SORT_ASC,'description' => SORT_ASC,],
+                'attributes' => [
+                    'title',
+                    'description',
+                    'variants_count',
+                    'citations_count',
+                    'folklors_count',
+                    'etymologies_count'
+                ]
             ],
             'pagination' => [
                 'pageSize' => Yii::$app->params['word']['pageSize'],
@@ -57,7 +92,16 @@ class WordSearch extends Word
         }
 
         $query->andFilterWhere(['like', 'title', $this->title]);
-        $query->andFilterWhere(['like', 'description', $this->description]);
+
+        $columnsWithOperands = [
+            'description',
+            'variants_count',
+            'citations_count',
+            'folklors_count',
+            'etymologies_count',
+        ];
+        $this->operandConditions($query, $columnsWithOperands);
+
         return $dataProvider;
     }
 }

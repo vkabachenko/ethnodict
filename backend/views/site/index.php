@@ -32,50 +32,48 @@ $this->title = 'Администрирование';
         [
             'attribute' => 'description',
             'value' => function($model) {
-                    return Utf8::mb_trunc($model->description,60);
+                    return Utf8::mb_trunc($model->description,40);
+                }
+        ],
+        [
+            'format' => 'raw',
+            'attribute' => 'variants_count',
+            'label' => 'Варианты',
+            'value' => function($model) {
+                    return Html::a($model->variants_count,
+                        ['variant/index', 'id' => $model->id]);
+                }
+        ],
+        [
+            'format' => 'raw',
+            'attribute' => 'citations_count',
+            'label' => 'Цитаты',
+            'value' => function($model) {
+                    return Html::a($model->citations_count,
+                        ['citation/index', 'id' => $model->id]);
+                }
+        ],
+        [
+            'format' => 'raw',
+            'attribute' => 'folklors_count',
+            'label' => 'Фольклор',
+            'value' => function($model) {
+                    return Html::a($model->folklors_count,
+                        ['word-folklore/index', 'id' => $model->id]);
+                }
+        ],
+        [
+            'format' => 'raw',
+            'attribute' => 'etymologies_count',
+            'label' => 'Этимология',
+            'value' => function($model) {
+                    return Html::a($model->etymologies_count,
+                        ['etymology/index', 'id' => $model->id]);
                 }
         ],
         [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{update}{delete}{variant}{citation}{folklore}{etymology}',
-            'buttons' => [
-                'variant' => function ($url, $model, $key) {
-                        return Html::a('<span class="glyphicon
-                        glyphicon-duplicate"></span>',
-                        ['variant/index', 'id' => $model->id],
-                        [
-                            'data-toggle' => 'tooltip',
-                            'title' => 'Варианты',
-                        ]);
-                    },
-                'citation' => function ($url, $model, $key) {
-                        return Html::a('<span class="glyphicon
-                        glyphicon-copyright-mark"></span>',
-                            ['citation/index', 'id' => $model->id],
-                            [
-                                'data-toggle' => 'tooltip',
-                                'title' => 'Цитаты',
-                            ]);
-                    },
-                'folklore' => function ($url, $model, $key) {
-                        return Html::a('<span class="glyphicon
-                        glyphicon-tree-deciduous"></span>',
-                            ['word-folklore/index', 'id' => $model->id],
-                            [
-                                'data-toggle' => 'tooltip',
-                                'title' => 'Фольклор',
-                            ]);
-                    },
-                'etymology' => function ($url, $model, $key) {
-                        return Html::a('<span class="glyphicon
-                        glyphicon-book"></span>',
-                            ['etymology/index', 'id' => $model->id],
-                            [
-                                'data-toggle' => 'tooltip',
-                                'title' => 'Этимология',
-                            ]);
-                    },
-            ],
+            'template' => '{update}{delete}',
             'header' => 'Действия'
         ],
     ],

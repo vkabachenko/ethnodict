@@ -13,9 +13,19 @@ use Yii;
  * @property string $description
  *
  * @property WordAccent[] $wordAccents
+ * @property WordVariant[] $wordVariants
+ * @property WordCitation[] $wordCitations
+ * @property WordFolklore[] $wordFolklors
+ * @property WordEtymology[] $wordEtymologies
+ *
  */
 class Word extends \yii\db\ActiveRecord
 {
+    public $variants_count;
+    public $citations_count;
+    public $folklors_count;
+    public $etymologies_count;
+
     /**
      * @inheritdoc
      */
@@ -44,7 +54,7 @@ class Word extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Наименование',
+            'title' => 'Словарное слово',
             'description' => 'Описание',
         ];
     }
@@ -55,6 +65,39 @@ class Word extends \yii\db\ActiveRecord
     public function getWordAccents()
     {
         return $this->hasMany(WordAccent::className(), ['id_word' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getWordVariants()
+    {
+        return $this->hasMany(WordVariant::className(), ['id_word' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getWordCitations()
+    {
+        return $this->hasMany(WordCitation::className(), ['id_word' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getWordFolklors()
+    {
+        return $this->hasMany(WordFolklore::className(), ['id_word' => 'id']);
+    }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getWordEtymologies()
+    {
+        return $this->hasMany(WordEtymology::className(), ['id_word' => 'id']);
     }
 
     /**

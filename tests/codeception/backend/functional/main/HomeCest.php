@@ -35,7 +35,7 @@ class HomeCest
         $I->see('2','li a');
 
         $I->expectTo('found last word in the second page');
-        $I->click('2');
+        $I->click('2','li a');
         $I->seeElement('tr',['data-key' => $this->last->id]);
     }
 
