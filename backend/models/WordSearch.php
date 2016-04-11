@@ -26,6 +26,7 @@ class WordSearch extends Word
                     'description',
                     'variants_count',
                     'citations_count',
+                    'combinations_count',
                     'folklors_count',
                     'etymologies_count',
                 ], 'safe'],
@@ -56,6 +57,7 @@ class WordSearch extends Word
             ->joinWith([
                 'wordVariants',
                 'wordCitations',
+                'wordCombinations',
                 'wordFolklors',
                 'wordEtymologies',
             ],false)
@@ -63,6 +65,7 @@ class WordSearch extends Word
                 '{{%word}}.*',
                 'variants_count' => new Expression('COUNT(DISTINCT {{%word_variant}}.id)'),
                 'citations_count' => new Expression('COUNT(DISTINCT {{%word_citation}}.id)'),
+                'combinations_count' => new Expression('COUNT(DISTINCT {{%word_combination}}.id)'),
                 'folklors_count' => new Expression('COUNT(DISTINCT {{%word_folklore}}.id)'),
                 'etymologies_count' => new Expression('COUNT(DISTINCT {{%word_etymology}}.id)'),
             ])
@@ -77,6 +80,7 @@ class WordSearch extends Word
                     'description',
                     'variants_count',
                     'citations_count',
+                    'combinations_count',
                     'folklors_count',
                     'etymologies_count'
                 ]
@@ -97,6 +101,7 @@ class WordSearch extends Word
             'description',
             'variants_count',
             'citations_count',
+            'combinations_count',
             'folklors_count',
             'etymologies_count',
         ];

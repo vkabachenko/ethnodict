@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'description')->textarea(); ?>
 
     <?= $form->field($model, 'id_source')
-    ->dropDownList(LiterarySource::find()->select(['short_link','id'])->orderBy('short_link')->indexBy('id')->column()); ?>
+    ->dropDownList(LiterarySource::find()->select(['short_link','id'])->orderBy('short_link')->indexBy('id')->column(),['prompt' => 'Выбор']); ?>
 
     <?= $form->field($model, 'source_addition')->textInput([
     'maxlength' => true,

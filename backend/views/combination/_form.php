@@ -5,16 +5,14 @@ use common\models\Region;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\EtymologyCitation */
+/* @var $model common\models\WordCombination */
 /* @var $form yii\widgets\ActiveForm */
 
 ?>
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'fragment')->textarea(); ?>
-
-    <?= $form->field($model, 'id_region')
-    ->dropDownList(Region::find()->select(['name','id'])->orderBy('name')->indexBy('id')->column(),['prompt' => 'Выбор']); ?>
+    <?= $form->field($model, 'combination')->textarea(); ?>
+    <?= $form->field($model, 'explanation')->textarea(); ?>
 
 
 <div class="form-group">

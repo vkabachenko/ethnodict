@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'fragment')->textarea(); ?>
 
     <?= $form->field($model, 'id_region')
-    ->dropDownList(Region::find()->select(['name','id'])->orderBy('name')->indexBy('id')->column()); ?>
+    ->dropDownList(Region::find()->select(['name','id'])->orderBy('name')->indexBy('id')->column(),['prompt' => 'Выбор']); ?>
 
 
 <div class="form-group">

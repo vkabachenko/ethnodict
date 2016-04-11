@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = 'В фольклоре';
             [
             'attribute' => 'id_folklore',
             'value' => function($model) {
-                    return $model->folklore->name;
+                    return $model->folklore ? $model->folklore->name : null;
                 },
             'filter' => Html::activeDropDownList($searchModel, 'id_region',
                     Folklore::find()->select(['name','id'])->orderBy('name')->indexBy('id')->column(),
@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = 'В фольклоре';
             [
             'attribute' => 'id_region',
             'value' => function($model) {
-                    return $model->region->name;
+                    return $model->region ? $model->region->name : null;
                 },
             'filter' => Html::activeDropDownList($searchModel, 'id_region',
                     Region::find()->select(['name','id'])->orderBy('name')->indexBy('id')->column(),

@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = 'Цитаты';
             [
             'attribute' => 'id_region',
             'value' => function($model, $key, $index, $column) {
-                    return $model->region->name;
+                    return $model->region ? $model->region->name : null;
                 },
             'filter' => Html::activeDropDownList($searchModel, 'id_region',
                     Region::find()->select(['name','id'])->orderBy('name')->indexBy('id')->column(),

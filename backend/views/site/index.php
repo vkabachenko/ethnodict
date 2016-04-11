@@ -55,6 +55,15 @@ $this->title = 'Администрирование';
         ],
         [
             'format' => 'raw',
+            'attribute' => 'combinations_count',
+            'label' => 'Сочетания',
+            'value' => function($model) {
+                    return Html::a($model->combinations_count,
+                        ['combination/index', 'id' => $model->id]);
+                }
+        ],
+        [
+            'format' => 'raw',
             'attribute' => 'folklors_count',
             'label' => 'Фольклор',
             'value' => function($model) {

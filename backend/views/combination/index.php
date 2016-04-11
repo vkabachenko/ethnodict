@@ -3,26 +3,26 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use common\helpers\Utf8;
-use common\models\LiterarySource;
+use common\models\Region;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\WordEtymologySearch */
+/* @var $searchModel backend\models\WordCombinationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $word common\models\Word */
 
-$this->title = 'Этимология';
-$this->params['breadcrumbs'][] = 'Этимология';
+$this->title = 'Словосочетания';
+$this->params['breadcrumbs'][] = 'Словосочетания';
 ?>
 
 <h1>
-    Этимология словарного слова
+    Устойчивые словосочетания словарного слова
     <strong>
         <?= Yii::$app->accent->lows($word) ?>
     </strong>
 </h1>
 
 <p>
-    <?= Html::a('Новый вариант', ['create','id_word' => $word->id],
+    <?= Html::a('Новое словосочетание', ['create','id_word' => $word->id],
         ['class' => 'btn btn-success']) ?>
 </p>
 
@@ -31,21 +31,17 @@ $this->params['breadcrumbs'][] = 'Этимология';
     'filterModel' => $searchModel,
     'columns' => [
             [
-            'attribute' => 'description',
+            'attribute' => 'combination',
             'value' => function($model) {
-                    return Utf8::mb_trunc($model->description,60);
+                    return Utf8::mb_trunc($model->combination,60);
                 },
             ],
             [
-            'attribute' => 'id_source',
-            'value' => function($model) {
-                    return $model->literarySource ? $model->literarySource->short_link: null;
+                'attribute' => 'explanation',
+                'value' => function($model) {
+                        return Utf8::mb_trunc($model->explanation,60);
                 },
-            'filter' => Html::activeDropDownList($searchModel, 'id_source',
-                    LiterarySource::find()->select(['short_link','id'])->orderBy('short_link')->indexBy('id')->column(),
-                    ['prompt' => 'Поиск','class' => 'form-control']),
             ],
-            'source_addition',
         [
             'class' => 'yii\grid\ActionColumn',
             'template' => '{update}{delete}{citation}',
@@ -53,14 +49,14 @@ $this->params['breadcrumbs'][] = 'Этимология';
                 'citation' => function ($url, $model, $key) {
                         return Html::a('<span class="glyphicon
                         glyphicon-copyright-mark"></span>',
-                            ['etymology-citation/index', 'id' => $model->id],
+                            ['combination-citation/index', 'id' => $model->id],
                             [
                                 'data-toggle' => 'tooltip',
                                 'title' => 'Цитаты',
                             ]);
                     },
-                ],
-                'header' => 'Действия'
+            ],
+            'header' => 'Действия'
         ],
     ],
 ]); ?>

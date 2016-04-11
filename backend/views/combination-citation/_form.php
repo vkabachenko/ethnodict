@@ -5,7 +5,7 @@ use common\models\Region;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\EtymologyCitation */
+/* @var $model common\models\CombinationCitation */
 /* @var $form yii\widgets\ActiveForm */
 
 ?>

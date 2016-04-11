@@ -6,28 +6,28 @@ use common\helpers\Utf8;
 use common\models\Region;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\EtymologyCitationSearch */
+/* @var $searchModel backend\models\CombinationCitationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $wordEtymology common\models\WordEtymology */
+/* @var $wordCombination common\models\WordCombination */
 
 $this->params['breadcrumbs'][] = [
-    'label' => 'Этимология',
-    'url' => ['etymology/index', 'id' => $wordEtymology->word->id]
+    'label' => 'Словосочетания',
+    'url' => ['combination/index', 'id' => $wordCombination->word->id]
 ];
 $this->title = 'Цитаты';
 $this->params['breadcrumbs'][] = 'Цитаты';
 ?>
 
 <h1>
-    Текстовые цитаты этимологии словарного слова
+    Текстовые цитаты словосочетаний словарного слова
     <strong>
-        <?= Yii::$app->accent->lows($wordEtymology->word) ?>
+        <?= Yii::$app->accent->lows($wordCombination->word) ?>
     </strong>
 </h1>
-<h2><em>Этимология </em><?= $wordEtymology->description ?></h2>
+<h2><em>Словосочетание </em><?= $wordCombination->combination ?></h2>
 
 <p>
-    <?= Html::a('Новая цитата', ['create','id_etymology' => $wordEtymology->id],
+    <?= Html::a('Новая цитата', ['create','id_combination' => $wordCombination->id],
         ['class' => 'btn btn-success']) ?>
 </p>
 

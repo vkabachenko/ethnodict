@@ -15,6 +15,7 @@ use Yii;
  * @property WordAccent[] $wordAccents
  * @property WordVariant[] $wordVariants
  * @property WordCitation[] $wordCitations
+ * @property WordCombination[] $wordCombinations
  * @property WordFolklore[] $wordFolklors
  * @property WordEtymology[] $wordEtymologies
  *
@@ -25,6 +26,7 @@ class Word extends \yii\db\ActiveRecord
     public $citations_count;
     public $folklors_count;
     public $etymologies_count;
+    public $combinations_count;
 
     /**
      * @inheritdoc
@@ -81,6 +83,14 @@ class Word extends \yii\db\ActiveRecord
     public function getWordCitations()
     {
         return $this->hasMany(WordCitation::className(), ['id_word' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getWordCombinations()
+    {
+        return $this->hasMany(WordCombination::className(), ['id_word' => 'id']);
     }
 
     /**

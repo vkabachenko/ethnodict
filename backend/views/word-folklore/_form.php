@@ -13,12 +13,12 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'id_folklore')
-    ->dropDownList(Folklore::find()->select(['name','id'])->orderBy('name')->indexBy('id')->column()); ?>
+    ->dropDownList(Folklore::find()->select(['name','id'])->orderBy('name')->indexBy('id')->column(),['prompt' => 'Выбор']); ?>
 
     <?= $form->field($model, 'fragment')->textarea(); ?>
 
     <?= $form->field($model, 'id_region')
-    ->dropDownList(Region::find()->select(['name','id'])->orderBy('name')->indexBy('id')->column()); ?>
+    ->dropDownList(Region::find()->select(['name','id'])->orderBy('name')->indexBy('id')->column(),['prompt' => 'Выбор']); ?>
 
 
 <div class="form-group">
