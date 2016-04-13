@@ -1,19 +1,38 @@
 <?php
 namespace backend\controllers;
 
-use backend\services\AccentService;
 use Yii;
-use yii\web\Controller;
 use backend\models\LoginForm;
 use backend\models\WordSearch;
 use common\models\Word;
 use yii\web\NotFoundHttpException;
+use backend\services\AccentService;
+use yii\filters\AccessControl;
 
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends \yii\web\Controller
 {
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'except' => ['login', 'error'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+        ];
+    }
+
 
     /**
      * @inheritdoc

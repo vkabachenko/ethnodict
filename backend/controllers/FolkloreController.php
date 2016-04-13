@@ -3,7 +3,6 @@
 namespace backend\controllers;
 
 use Yii;
-use yii\web\Controller;
 use backend\models\FolkloreSearch;
 use common\models\Folklore;
 use yii\web\NotFoundHttpException;

@@ -3,7 +3,6 @@
 namespace backend\controllers;
 
 use Yii;
-use yii\web\Controller;
 use backend\models\WordCitationSearch;
 use common\models\WordCitation;
 use common\models\Word;

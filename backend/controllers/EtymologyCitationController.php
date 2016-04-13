@@ -3,7 +3,6 @@
 namespace backend\controllers;
 
 use Yii;
-use yii\web\Controller;
 use backend\models\EtymologyCitationSearch;
 use common\models\EtymologyCitation;
 use common\models\WordEtymology;

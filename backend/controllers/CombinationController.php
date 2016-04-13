@@ -3,7 +3,6 @@
 namespace backend\controllers;
 
 use Yii;
-use yii\web\Controller;
 use backend\models\WordCombinationSearch;
 use common\models\WordCombination;
 use common\models\Word;

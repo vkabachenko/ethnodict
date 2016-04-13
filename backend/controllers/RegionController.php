@@ -3,7 +3,6 @@
 namespace backend\controllers;
 
 use Yii;
-use yii\web\Controller;
 use backend\models\RegionSearch;
 use common\models\Region;
 use yii\web\NotFoundHttpException;

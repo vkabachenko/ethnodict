@@ -6,7 +6,6 @@ use common\models\Word;
 use common\models\WordVariant;
 use Yii;
 use backend\models\WordVariantSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use backend\services\AccentService;

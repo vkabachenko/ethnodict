@@ -3,7 +3,6 @@
 namespace backend\controllers;
 
 use Yii;
-use yii\web\Controller;
 use backend\models\LiterarySourceSearch;
 use common\models\LiterarySource;
 use yii\web\NotFoundHttpException;

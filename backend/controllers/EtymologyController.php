@@ -3,7 +3,6 @@
 namespace backend\controllers;
 
 use Yii;
-use yii\web\Controller;
 use backend\models\WordEtymologySearch;
 use common\models\WordEtymology;
 use common\models\Word;

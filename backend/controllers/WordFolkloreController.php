@@ -3,7 +3,6 @@
 namespace backend\controllers;
 
 use Yii;
-use yii\web\Controller;
 use backend\models\WordFolkloreSearch;
 use common\models\WordFolklore;
 use common\models\Word;

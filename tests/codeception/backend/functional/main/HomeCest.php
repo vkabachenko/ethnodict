@@ -16,6 +16,7 @@ class HomeCest
     {
         $this->first = Word::find()->orderBy('title')->one();
         $this->last = Word::find()->orderBy('title desc')->one();
+        \Yii::$app->user->login(\backend\models\User::findIdentity('admin'));
     }
 
     public function homePage(FunctionalTester $I)
