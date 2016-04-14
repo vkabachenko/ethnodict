@@ -12,7 +12,7 @@ class UserController extends Controller
     {
         return [
             'add' => [
-                'class' => 'console\actions\AddUserAction',
+                'class' => 'vkabachenko\phpuser\AddUserAction',
                 'pathAlias' => '@backend'
             ],
         ];

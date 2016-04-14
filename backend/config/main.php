@@ -15,7 +15,7 @@ return [
     'modules' => [],
     'components' => [
         'user' => [
-            'identityClass' => 'backend\models\User',
+            'identityClass' => 'vkabachenko\phpuser\User',
             'enableAutoLogin' => true,
         ],
         'log' => [
