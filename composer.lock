@@ -383,12 +383,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vkabachenko/phpuser.git",
-                "reference": "206f16b7891c9100af2de5b5e772db4b9f0c42ed"
+                "reference": "1073a28c9b4591c27749b534fd4649e1cfaf62f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vkabachenko/phpuser/zipball/206f16b7891c9100af2de5b5e772db4b9f0c42ed",
-                "reference": "206f16b7891c9100af2de5b5e772db4b9f0c42ed",
+                "url": "https://api.github.com/repos/vkabachenko/phpuser/zipball/1073a28c9b4591c27749b534fd4649e1cfaf62f9",
+                "reference": "1073a28c9b4591c27749b534fd4649e1cfaf62f9",
                 "shasum": ""
             },
             "require": {
@@ -402,14 +402,23 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD 3-Clause"
+                "MIT"
             ],
-            "description": ".",
+            "authors": [
+                {
+                    "name": "Viktor Kabachenko",
+                    "email": "vkabachenko@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple non-database user class for yii2 projects",
             "homepage": "https://github.com/vkabachenko/phpuser",
             "keywords": [
+                "model",
+                "user",
                 "yii2"
             ],
-            "time": "2016-04-13 10:16:04"
+            "time": "2016-04-15 17:29:16"
         },
         {
             "name": "yiisoft/yii2",

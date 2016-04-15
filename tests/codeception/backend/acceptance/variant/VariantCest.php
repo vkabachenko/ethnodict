@@ -5,9 +5,15 @@ use common\models\WordVariant;
 use tests\codeception\backend\AcceptanceTester;
 use common\models\Word;
 use tests\codeception\backend\_pages\variant\UpdateVariantPage;
+use tests\codeception\backend\_pages\LoginPage;
 
 class MainCest
 {
+    public function _before(AcceptanceTester $I)
+    {
+        $loginPage = LoginPage::openBy($I);
+        $loginPage->login();
+    }
 
     public function updateVariant(AcceptanceTester $I)
     {

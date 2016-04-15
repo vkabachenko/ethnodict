@@ -16,7 +16,7 @@ class VariantCest
     {
         $this->word = Word::find()->orderBy('title')->one();
         $this->variant = WordVariant::find()->where(['id_word'=>$this->word->id])->one();
-        \Yii::$app->user->login(\backend\models\User::findIdentity('admin'));
+        \Yii::$app->user->login(\vkabachenko\phpuser\User::findIdentity('admin'));
         $I->amOnPage(['variant/index','id'=>$this->word->id]);
 
     }

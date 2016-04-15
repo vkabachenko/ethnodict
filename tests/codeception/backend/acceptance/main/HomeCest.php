@@ -5,9 +5,16 @@ use common\models\WordAccent;
 use tests\codeception\backend\AcceptanceTester;
 use common\models\Word;
 use tests\codeception\backend\_pages\main\UpdateWordPage;
+use tests\codeception\backend\_pages\LoginPage;
 
 class HomeCest
 {
+
+    public function _before(AcceptanceTester $I)
+    {
+        $loginPage = LoginPage::openBy($I);
+        $loginPage->login();
+    }
 
     public function updateWord(AcceptanceTester $I)
     {
