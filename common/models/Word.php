@@ -18,6 +18,7 @@ use Yii;
  * @property WordCombination[] $wordCombinations
  * @property WordFolklore[] $wordFolklors
  * @property WordEtymology[] $wordEtymologies
+ * @property File[] $files
  *
  */
 class Word extends \yii\db\ActiveRecord
@@ -108,6 +109,15 @@ class Word extends \yii\db\ActiveRecord
     public function getWordEtymologies()
     {
         return $this->hasMany(WordEtymology::className(), ['id_word' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFiles()
+    {
+        return $this->hasMany(File::className(), ['id' => 'id_file'])
+            ->viaTable('{{%word_file}}', ['id_word' => 'id']);
     }
 
     /**

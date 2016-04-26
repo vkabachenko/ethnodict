@@ -1,4 +1,5 @@
 <?php
+setlocale(LC_ALL, 'ru_RU.UTF8');
 return [
     'language' => 'ru',
     'timeZone' => 'Europe/Moscow',

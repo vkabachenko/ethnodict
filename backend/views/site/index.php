@@ -82,7 +82,18 @@ $this->title = 'Администрирование';
         ],
         [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{update}{delete}',
+            'template' => '{update}{delete}{file}',
+            'buttons' => [
+                'file' => function ($url, $model, $key) {
+                        return Html::a('<span class="glyphicon
+                        glyphicon-upload"></span>',
+                            ['word-file/index', 'id' => $model->id],
+                            [
+                                'data-toggle' => 'tooltip',
+                                'title' => 'Файлы',
+                            ]);
+                    },
+            ],
             'header' => 'Действия'
         ],
     ],
