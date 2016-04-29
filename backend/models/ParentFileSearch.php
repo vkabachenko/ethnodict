@@ -4,12 +4,24 @@ namespace backend\models;
 
 use Yii;
 use common\models\File;
-use common\models\Word;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use common\models\parents\FileInterface;
 
-class WordFileSearch extends File
+class ParentFileSearch extends File
 {
+    /* @var $parent \yii\db\ActiveRecord */
+    protected $parent; // parent model for current file
+
+    /**
+     * @inheritdoc
+     */
+    public function __construct(FileInterface $parent, $config = [])
+    {
+        $this->parent = $parent;
+        parent::__construct($config);
+    }
+
 
     /**
      * @inheritdoc
@@ -33,14 +45,15 @@ class WordFileSearch extends File
     /**
      * Creates data provider instance with search query applied
      *
-     * @param integer $id_word
+     * @param integer $id_parent
      * @param array $params
      *
      * @return ActiveDataProvider
      */
-    public function search($id_word, $params)
+    public function search($id_parent, $params)
     {
-        $query = Word::findOne($id_word)->getFiles();
+        /* @var $query \yii\db\ActiveQuery */
+        $query = $this->parent->findOne($id_parent)->getFiles();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,

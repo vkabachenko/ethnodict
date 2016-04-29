@@ -64,9 +64,14 @@ class File extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getWords()
+    public function getParents(\common\models\parents\FileInterface $parent)
     {
-        return $this->hasMany(Word::className(), ['id' => 'id_word'])
-            ->viaTable('{{%word_file}}', ['id_file' => 'id']);
+        /* @var $parent \yii\db\ActiveRecord */
+        return $this->hasMany($parent->className(), ['id' => 'id_parent'])
+            ->viaTable('{{%parent_file}}', ['id_file' => 'id'],
+              function($q) use ($parent) {
+              /* @var $q \yii\db\ActiveQuery */
+                 $q->andWhere(['parent_namespace' => $parent->className()]);
+              });
     }
 }

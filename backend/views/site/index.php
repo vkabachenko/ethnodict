@@ -87,7 +87,7 @@ $this->title = 'Администрирование';
                 'file' => function ($url, $model, $key) {
                         return Html::a('<span class="glyphicon
                         glyphicon-upload"></span>',
-                            ['word-file/index', 'id' => $model->id],
+                            ['upload', 'id' => $model->id],
                             [
                                 'data-toggle' => 'tooltip',
                                 'title' => 'Файлы',

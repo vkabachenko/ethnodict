@@ -84,6 +84,16 @@ class SiteController extends \yii\web\Controller
     }
 
     /**
+     * @param $id integer
+     * @return \yii\web\Response
+     */
+    public function actionUpload($id)
+    {
+        Yii::$app->session['fileInterface'] = 'common\models\Word';
+        $this->redirect(['parent-file/index','id' => $id]);
+    }
+
+    /**
      * @param $model Word
      * @return \yii\web\Response
      */

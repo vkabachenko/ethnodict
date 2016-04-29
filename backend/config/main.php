@@ -11,7 +11,7 @@ return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','dependence'],
     'modules' => [],
     'components' => [
         'user' => [
@@ -30,6 +30,9 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'dependence' => [
+            'class' => 'backend\components\DependenceComponent'
+        ]
     ],
     'params' => $params,
 ];

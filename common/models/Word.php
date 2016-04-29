@@ -2,8 +2,11 @@
 
 namespace common\models;
 
-use common\helpers\Utf8;
 use Yii;
+use common\helpers\Utf8;
+use yii\db\ActiveRecord;
+use common\models\parents\FileInterface;
+
 
 /**
  * This is the model class for table "{{%word}}".
@@ -21,7 +24,7 @@ use Yii;
  * @property File[] $files
  *
  */
-class Word extends \yii\db\ActiveRecord
+class Word extends ActiveRecord implements FileInterface
 {
     public $variants_count;
     public $citations_count;
@@ -117,7 +120,11 @@ class Word extends \yii\db\ActiveRecord
     public function getFiles()
     {
         return $this->hasMany(File::className(), ['id' => 'id_file'])
-            ->viaTable('{{%word_file}}', ['id_word' => 'id']);
+            ->viaTable('{{%parent_file}}', ['id_parent' => 'id'],
+                function($q) {
+                    /* @var $q \yii\db\ActiveQuery */
+                    $q->andWhere(['parent_namespace' => 'common\models\Word']);
+                });
     }
 
     /**

@@ -7,9 +7,9 @@ use common\models\Region;
 use common\helpers\Utf8;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\WordFileSearch */
+/* @var $searchModel backend\models\ParentFileSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $word common\models\Word */
+/* @var $parentModel \common\models\Word */
 
 $this->title = 'Файлы';
 $this->params['breadcrumbs'][] = 'Файлы';
@@ -17,12 +17,12 @@ $this->params['breadcrumbs'][] = 'Файлы';
 
 <h1>
     Файлы словарного слова <strong>
-        <?= Yii::$app->accent->lows($word) ?>
+        <?= Yii::$app->accent->lows($parentModel) ?>
     </strong>
 </h1>
 
 <p>
-    <?= Html::a('Новый файл', ['create','id_word' => $word->id],
+    <?= Html::a('Новый файл', ['create','id_parent' => $parentModel->id],
         ['class' => 'btn btn-success']) ?>
 </p>
 
@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = 'Файлы';
     'columns' => [
             [
             'attribute' => 'upload_file',
+            'label' => 'Файл',
             'format' => 'raw',
             'value' => function($model) {
                     return Html::a($model->upload_file,['download','id'=>$model->id]);
