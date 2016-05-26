@@ -56,7 +56,18 @@ $this->params['breadcrumbs'][] = 'В фольклоре';
             ],
             [
             'class' => 'yii\grid\ActionColumn',
-            'template' => '{update}{delete}',
+            'template' => '{update}{delete}{file}',
+            'buttons' => [
+                'file' => function ($url, $model, $key) {
+                        return Html::a('<span class="glyphicon
+                    glyphicon-upload"></span>',
+                            ['upload', 'id' => $model->id],
+                            [
+                                'data-toggle' => 'tooltip',
+                                'title' => 'Файлы',
+                            ]);
+                    },
+            ],
             'header' => 'Действия'
             ],
     ],

@@ -18,6 +18,6 @@ $this->params['breadcrumbs'][] = 'Создание';
     </strong>
 </h1>
 
-<?= $this->render('_form', [
+<?= $this->render('//file/_form', [
     'model' => $model,
 ]) ?>

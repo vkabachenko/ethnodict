@@ -3,6 +3,9 @@
 namespace common\models;
 
 use Yii;
+use common\models\parents\FileInterface;
+use common\traits\FileTrait;
+use common\behaviors\FileCascadeBehavior;
 
 /**
  * This is the model class for table "{{%word_folklore}}".
@@ -17,8 +20,23 @@ use Yii;
  * @property Folklore $folklore
  * @property Word $word
  */
-class WordFolklore extends \yii\db\ActiveRecord
+class WordFolklore extends \yii\db\ActiveRecord  implements FileInterface
 {
+    use FileTrait;
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return array_merge(parent::behaviors(),[
+            [
+                'class' => FileCascadeBehavior::className(),
+            ],
+        ]);
+    }
+
+
     /**
      * @inheritdoc
      */
@@ -76,4 +94,5 @@ class WordFolklore extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Folklore::className(), ['id' => 'id_folklore']);
     }
+
 }

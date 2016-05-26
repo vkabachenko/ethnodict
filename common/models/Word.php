@@ -6,6 +6,8 @@ use Yii;
 use common\helpers\Utf8;
 use yii\db\ActiveRecord;
 use common\models\parents\FileInterface;
+use common\traits\FileTrait;
+use common\behaviors\FileCascadeBehavior;
 
 
 /**
@@ -24,13 +26,29 @@ use common\models\parents\FileInterface;
  * @property File[] $files
  *
  */
+
 class Word extends ActiveRecord implements FileInterface
 {
+    use FileTrait;
+
     public $variants_count;
     public $citations_count;
     public $folklors_count;
     public $etymologies_count;
     public $combinations_count;
+
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return array_merge(parent::behaviors(),[
+            [
+                'class' => FileCascadeBehavior::className(),
+            ],
+        ]);
+    }
 
     /**
      * @inheritdoc
@@ -112,19 +130,6 @@ class Word extends ActiveRecord implements FileInterface
     public function getWordEtymologies()
     {
         return $this->hasMany(WordEtymology::className(), ['id_word' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getFiles()
-    {
-        return $this->hasMany(File::className(), ['id' => 'id_file'])
-            ->viaTable('{{%parent_file}}', ['id_parent' => 'id'],
-                function($q) {
-                    /* @var $q \yii\db\ActiveQuery */
-                    $q->andWhere(['parent_namespace' => 'common\models\Word']);
-                });
     }
 
     /**

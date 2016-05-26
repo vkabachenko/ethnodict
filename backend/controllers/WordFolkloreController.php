@@ -10,7 +10,6 @@ use yii\web\NotFoundHttpException;
 
 class WordFolkloreController extends Controller
 {
-
     /**
      * @param $id integer id model Word
      * @return string
@@ -80,6 +79,16 @@ class WordFolkloreController extends Controller
         $model->delete();
 
         return $this->redirect(['index', 'id' => $id_word]);
+    }
+
+    /**
+     * @param $id integer
+     * @return \yii\web\Response
+     */
+    public function actionUpload($id)
+    {
+        Yii::$app->session['fileInterface'] = 'common\models\WordFolklore';
+        $this->redirect(['parent-file/index','id' => $id]);
     }
 
     /**
