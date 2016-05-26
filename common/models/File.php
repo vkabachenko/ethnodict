@@ -43,7 +43,7 @@ class File extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['upload_file'], 'file'],
+            [['upload_file'], 'file', 'maxSize' => \common\helpers\UploadHelper::fileUploadMaxSize(),],
             [['upload_file'], 'file', 'skipOnEmpty' => false, 'on' => 'create'],
             [['description'], 'string'],
         ];

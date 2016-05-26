@@ -1,8 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use common\models\Region;
-use common\models\Folklore;
+use kartik\file\FileInput;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -16,7 +15,12 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'upload_file')->fileInput(); ?>
+    <?= $form->field($model, 'upload_file')->widget(FileInput::classname(),
+        [
+            'pluginOptions' => [
+                'showCaption' => false,
+            ]
+        ]); ?>
 
     <?= $form->field($model, 'description')->textarea(); ?>
 
