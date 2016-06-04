@@ -16,6 +16,7 @@ use common\behaviors\FileCascadeBehavior;
  * @property integer $id
  * @property string $title
  * @property string $description
+ * @property integer $id_category
  *
  * @property WordAccent[] $wordAccents
  * @property WordVariant[] $wordVariants
@@ -67,7 +68,8 @@ class Word extends ActiveRecord implements FileInterface
             [['id'], 'safe', 'on' => 'variant'],
             [['title'], 'required'],
             [['title'], 'string', 'max' => 40],
-            ['description', 'safe', 'on' => 'default']
+            ['description', 'safe', 'on' => 'default'],
+            ['id_category', 'integer']
         ];
     }
 
@@ -80,6 +82,7 @@ class Word extends ActiveRecord implements FileInterface
             'id' => 'ID',
             'title' => 'Словарное слово',
             'description' => 'Описание',
+            'id_category' => 'Раздел'
         ];
     }
 
@@ -144,6 +147,5 @@ class Word extends ActiveRecord implements FileInterface
             return false;
         }
     }
-
 
 }

@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Word */
@@ -14,6 +15,9 @@ use yii\widgets\ActiveForm;
     'maxlength' => true,
     'id' => 'word-title'
 ]) ?>
+
+<?= $form->field($model, 'id_category')
+    ->dropDownList(Category::find()->select(['name','id'])->orderBy('name')->indexBy('id')->column(),['prompt' => 'Выбор']); ?>
 
 <?= $form->field($model, 'description')->textarea(); ?>
 
