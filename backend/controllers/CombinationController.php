@@ -82,6 +82,17 @@ class CombinationController extends Controller
         return $this->redirect(['index', 'id' => $id_word]);
     }
 
+
+    /**
+     * @param $id integer
+     * @return \yii\web\Response
+     */
+    public function actionCitation($id)
+    {
+        Yii::$app->session['citationInterface'] = 'common\models\WordCombination';
+        $this->redirect(['parent-citation/index','id' => $id]);
+    }
+
     /**
      * @param integer $id
      * @return WordCombination the loaded model

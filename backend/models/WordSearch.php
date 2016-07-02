@@ -56,7 +56,7 @@ class WordSearch extends Word
         $query = Word::find()->with('wordAccents')
             ->joinWith([
                 'wordVariants',
-                'wordCitations',
+                'citations',
                 'wordCombinations',
                 'wordFolklors',
                 'wordEtymologies',

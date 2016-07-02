@@ -50,7 +50,7 @@ $this->title = 'Администрирование';
             'label' => 'Цитаты',
             'value' => function($model) {
                     return Html::a($model->citations_count,
-                        ['citation/index', 'id' => $model->id]);
+                        ['site/citation', 'id' => $model->id]);
                 }
         ],
         [

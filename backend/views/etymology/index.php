@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = 'Этимология';
                 'citation' => function ($url, $model, $key) {
                         return Html::a('<span class="glyphicon
                         glyphicon-copyright-mark"></span>',
-                            ['etymology-citation/index', 'id' => $model->id],
+                            ['etymology/citation', 'id' => $model->id],
                             [
                                 'data-toggle' => 'tooltip',
                                 'title' => 'Цитаты',

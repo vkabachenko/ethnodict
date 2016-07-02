@@ -6,6 +6,7 @@ use Yii;
 use common\helpers\Utf8;
 use yii\db\ActiveRecord;
 use common\models\parents\FileInterface;
+use common\models\parents\CitationInterface;
 use common\traits\FileTrait;
 use common\behaviors\FileCascadeBehavior;
 
@@ -20,7 +21,7 @@ use common\behaviors\FileCascadeBehavior;
  *
  * @property WordAccent[] $wordAccents
  * @property WordVariant[] $wordVariants
- * @property WordCitation[] $wordCitations
+ * @property WordCitation[] $citations
  * @property WordCombination[] $wordCombinations
  * @property WordFolklore[] $wordFolklors
  * @property WordEtymology[] $wordEtymologies
@@ -28,7 +29,7 @@ use common\behaviors\FileCascadeBehavior;
  *
  */
 
-class Word extends ActiveRecord implements FileInterface
+class Word extends ActiveRecord implements FileInterface, CitationInterface
 {
     use FileTrait;
 
@@ -87,6 +88,15 @@ class Word extends ActiveRecord implements FileInterface
     }
 
     /**
+     * @return WordCitation
+     */
+
+    public static function getCitationModel()
+    {
+        return new WordCitation();
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getWordAccents()
@@ -105,9 +115,9 @@ class Word extends ActiveRecord implements FileInterface
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getWordCitations()
+    public function getCitations()
     {
-        return $this->hasMany(WordCitation::className(), ['id_word' => 'id']);
+        return $this->hasMany(WordCitation::className(), ['id_parent' => 'id']);
     }
 
     /**

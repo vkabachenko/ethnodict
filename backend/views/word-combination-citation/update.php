@@ -2,26 +2,26 @@
 
 /* @var $this yii\web\View */
 /* @var $model common\models\CombinationCitation */
-/* @var $wordCombination common\models\WordCombination */
+/* @var $parent common\models\WordCombination */
 
 $this->title = 'Цитата - редактирование';
 $this->params['breadcrumbs'][] = [
     'label' => 'Словосочетание',
-    'url' => ['combination/index', 'id' => $wordCombination->word->id]
+    'url' => ['combination/index', 'id' => $parent->word->id]
 ];
 $this->params['breadcrumbs'][] = [
     'label' => 'Цитаты',
-    'url' => ['index', 'id' => $wordCombination->id]
+    'url' => ['index', 'id' => $parent->id]
 ];
 $this->params['breadcrumbs'][] = 'Редактирование';
 ?>
 <h1>
     Редактирование словосочетания цитаты словарного слова
     <strong>
-        <?= Yii::$app->accent->lows($wordCombination->word) ?>
+        <?= Yii::$app->accent->lows($parent->word) ?>
     </strong>
 </h1>
-    <h2><em>Словосочетание </em><?= $wordCombination->combination ?></h2>
+    <h2><em>Словосочетание </em><?= $parent->combination ?></h2>
 
 <?= $this->render('_form', [
     'model' => $model,

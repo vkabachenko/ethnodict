@@ -94,6 +94,17 @@ class SiteController extends \yii\web\Controller
     }
 
     /**
+     * @param $id integer
+     * @return \yii\web\Response
+     */
+    public function actionCitation($id)
+    {
+        Yii::$app->session['citationInterface'] = 'common\models\Word';
+        $this->redirect(['parent-citation/index','id' => $id]);
+    }
+
+
+    /**
      * @param $model Word
      * @return \yii\web\Response
      */

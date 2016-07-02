@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = 'Словосочетания';
                 'citation' => function ($url, $model, $key) {
                         return Html::a('<span class="glyphicon
                         glyphicon-copyright-mark"></span>',
-                            ['combination-citation/index', 'id' => $model->id],
+                            ['combination/citation', 'id' => $model->id],
                             [
                                 'data-toggle' => 'tooltip',
                                 'title' => 'Цитаты',

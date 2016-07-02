@@ -3,12 +3,19 @@
 namespace backend\models;
 
 use Yii;
-use common\models\CombinationCitation;
-use yii\base\Model;
 use yii\data\ActiveDataProvider;
+use yii\db\ActiveRecord;
 
-class CombinationCitationSearch extends CombinationCitation
+class ParentCitationSearch extends ActiveRecord
 {
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return Yii::$container->get('common\models\parents\CitationInterface')
+            ->getCitationModel()->tableName();
+    }
 
     /**
      * @inheritdoc
@@ -23,26 +30,16 @@ class CombinationCitationSearch extends CombinationCitation
 
 
     /**
-     * @inheritdoc
-     */
-    public function scenarios()
-    {
-        // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
-    }
-
-    /**
      * Creates data provider instance with search query applied
      *
-     * @param integer $id_combination
+     * @param \yii\db\ActiveQuery $parentQuery
      * @param array $params
      *
      * @return ActiveDataProvider
      */
-    public function search($id_combination, $params)
+    public function search($parentQuery, $params)
     {
-        $query = CombinationCitation::find()->where(['id_combination' => $id_combination])
-            ->joinWith('region');
+        $query = $parentQuery->joinWith('region');
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => false,

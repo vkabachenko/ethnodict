@@ -8,11 +8,11 @@ use common\models\Region;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\EtymologyCitationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $wordEtymology common\models\WordEtymology */
+/* @var $parentModel common\models\WordEtymology */
 
 $this->params['breadcrumbs'][] = [
     'label' => 'Этимология',
-    'url' => ['etymology/index', 'id' => $wordEtymology->word->id]
+    'url' => ['etymology/index', 'id' => $parentModel->word->id]
 ];
 $this->title = 'Цитаты';
 $this->params['breadcrumbs'][] = 'Цитаты';
@@ -21,13 +21,13 @@ $this->params['breadcrumbs'][] = 'Цитаты';
 <h1>
     Текстовые цитаты этимологии словарного слова
     <strong>
-        <?= Yii::$app->accent->lows($wordEtymology->word) ?>
+        <?= Yii::$app->accent->lows($parentModel->word) ?>
     </strong>
 </h1>
-<h2><em>Этимология </em><?= $wordEtymology->description ?></h2>
+<h2><em>Этимология </em><?= $parentModel->description ?></h2>
 
 <p>
-    <?= Html::a('Новая цитата', ['create','id_etymology' => $wordEtymology->id],
+    <?= Html::a('Новая цитата', ['create','id_parent' => $parentModel->id],
         ['class' => 'btn btn-success']) ?>
 </p>
 

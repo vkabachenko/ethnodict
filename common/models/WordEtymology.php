@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use common\models\parents\CitationInterface;
 
 /**
  * This is the model class for table "{{%word_etymology}}".
@@ -16,7 +17,7 @@ use Yii;
  * @property LiterarySource $literarySource
  * @property Word $word
  */
-class WordEtymology extends \yii\db\ActiveRecord
+class WordEtymology extends \yii\db\ActiveRecord implements CitationInterface
 {
     /**
      * @inheritdoc
@@ -54,6 +55,15 @@ class WordEtymology extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return EtymologyCitation
+     */
+
+    public static function getCitationModel()
+    {
+        return new EtymologyCitation();
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getLiterarySource()
@@ -68,4 +78,14 @@ class WordEtymology extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Word::className(), ['id' => 'id_word']);
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCitations()
+    {
+        return $this->hasMany(EtymologyCitation::className(), ['id_parent' => 'id']);
+    }
+
+
 }

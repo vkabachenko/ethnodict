@@ -12,6 +12,11 @@ class DependenceComponent extends Object
         if ($fileInterface) {
             \Yii::$container->set('common\models\parents\FileInterface', $fileInterface);
         }
+
+        $citationInterface = \Yii::$app->session->get('citationInterface');
+        if ($citationInterface) {
+            \Yii::$container->set('common\models\parents\CitationInterface', $citationInterface);
+        }
     }
 
 } 

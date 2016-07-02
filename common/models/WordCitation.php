@@ -10,7 +10,7 @@ use Yii;
  * @property integer $id
  * @property string $fragment
  * @property integer $id_region
- * @property integer $id_word
+ * @property integer $id_parent
  *
  * @property Region $region
  * @property Word $word
@@ -31,9 +31,9 @@ class WordCitation extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_word'], 'required'],
+            [['id_parent'], 'required'],
             [['fragment'], 'string'],
-            [['id_word','id_region'], 'integer']
+            [['id_parent','id_region'], 'integer']
         ];
     }
 
@@ -44,7 +44,7 @@ class WordCitation extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_word' => 'Id Word',
+            'id_parent' => 'Id Word',
             'fragment' => 'Текст цитаты',
             'id_region' => 'Район',
         ];
@@ -55,7 +55,7 @@ class WordCitation extends \yii\db\ActiveRecord
      */
     public function getWord()
     {
-        return $this->hasOne(Word::className(), ['id' => 'id_word']);
+        return $this->hasOne(Word::className(), ['id' => 'id_parent']);
     }
 
     /**

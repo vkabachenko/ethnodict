@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "{{%etymology_citation}}".
  *
  * @property integer $id
- * @property integer $id_etymology
+ * @property integer $id_parent
  * @property string $fragment
  * @property integer $id_region
  *
@@ -31,8 +31,8 @@ class EtymologyCitation extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_etymology'], 'required'],
-            [['id_etymology', 'id_region'], 'integer'],
+            [['id_parent'], 'required'],
+            [['id_parent', 'id_region'], 'integer'],
             [['fragment'], 'string']
         ];
     }
@@ -44,7 +44,7 @@ class EtymologyCitation extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_etymology' => 'Id Etymology',
+            'id_parent' => 'Id parent',
             'fragment' => 'Текст цитаты',
             'id_region' => 'Район',
         ];
@@ -63,6 +63,6 @@ class EtymologyCitation extends \yii\db\ActiveRecord
      */
     public function getWordEtymology()
     {
-        return $this->hasOne(WordEtymology::className(), ['id' => 'id_etymology']);
+        return $this->hasOne(WordEtymology::className(), ['id' => 'id_parent']);
     }
 }

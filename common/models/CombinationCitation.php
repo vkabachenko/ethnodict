@@ -8,7 +8,7 @@ use Yii;
  * This is the model class for table "{{%combination_citation}}".
  *
  * @property integer $id
- * @property integer $id_combination
+ * @property integer $id_parent
  * @property string $fragment
  * @property integer $id_region
  *
@@ -31,8 +31,8 @@ class CombinationCitation extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_combination'], 'required'],
-            [['id_combination', 'id_region'], 'integer'],
+            [['id_parent'], 'required'],
+            [['id_parent', 'id_region'], 'integer'],
             [['fragment'], 'string']
         ];
     }
@@ -44,7 +44,7 @@ class CombinationCitation extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'id_combination' => 'Id Combination',
+            'id_parent' => 'Id parent',
             'fragment' => 'Текст цитаты',
             'id_region' => 'Район',
         ];
@@ -63,6 +63,6 @@ class CombinationCitation extends \yii\db\ActiveRecord
      */
     public function getWordCombination()
     {
-        return $this->hasOne(WordCombination::className(), ['id' => 'id_combination']);
+        return $this->hasOne(WordCombination::className(), ['id' => 'id_parent']);
     }
 }

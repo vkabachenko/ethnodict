@@ -6,28 +6,23 @@ use common\helpers\Utf8;
 use common\models\Region;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\CombinationCitationSearch */
+/* @var $searchModel backend\models\WordCitationSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-/* @var $wordCombination common\models\WordCombination */
+/* @var $parentModel common\models\Word */
 
-$this->params['breadcrumbs'][] = [
-    'label' => 'Словосочетания',
-    'url' => ['combination/index', 'id' => $wordCombination->word->id]
-];
 $this->title = 'Цитаты';
 $this->params['breadcrumbs'][] = 'Цитаты';
 ?>
 
 <h1>
-    Текстовые цитаты словосочетаний словарного слова
+    Текстовые цитаты словарного слова
     <strong>
-        <?= Yii::$app->accent->lows($wordCombination->word) ?>
+        <?= Yii::$app->accent->lows($parentModel) ?>
     </strong>
 </h1>
-<h2><em>Словосочетание </em><?= $wordCombination->combination ?></h2>
 
 <p>
-    <?= Html::a('Новая цитата', ['create','id_combination' => $wordCombination->id],
+    <?= Html::a('Новая цитата', ['create','id_parent' => $parentModel->id],
         ['class' => 'btn btn-success']) ?>
 </p>
 
@@ -37,13 +32,13 @@ $this->params['breadcrumbs'][] = 'Цитаты';
     'columns' => [
             [
             'attribute' => 'fragment',
-            'value' => function($model) {
+            'value' => function($model, $key, $index, $column) {
                     return Utf8::mb_trunc($model->fragment,60);
                 },
             ],
             [
             'attribute' => 'id_region',
-            'value' => function($model) {
+            'value' => function($model, $key, $index, $column) {
                     return $model->region ? $model->region->name : null;
                 },
             'filter' => Html::activeDropDownList($searchModel, 'id_region',

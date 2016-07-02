@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use common\models\parents\CitationInterface;
 
 /**
  * This is the model class for table "{{%word_citation}}".
@@ -14,7 +15,7 @@ use Yii;
  *
  * @property Word $word
  */
-class WordCombination extends \yii\db\ActiveRecord
+class WordCombination extends \yii\db\ActiveRecord implements CitationInterface
 {
     /**
      * @inheritdoc
@@ -50,11 +51,28 @@ class WordCombination extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return CombinationCitation
+     */
+
+    public static function getCitationModel()
+    {
+        return new CombinationCitation();
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getWord()
     {
         return $this->hasOne(Word::className(), ['id' => 'id_word']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCitations()
+    {
+        return $this->hasMany(CombinationCitation::className(), ['id_parent' => 'id']);
     }
 
 }

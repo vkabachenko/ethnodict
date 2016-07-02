@@ -83,6 +83,16 @@ class EtymologyController extends Controller
     }
 
     /**
+     * @param $id integer
+     * @return \yii\web\Response
+     */
+    public function actionCitation($id)
+    {
+        Yii::$app->session['citationInterface'] = 'common\models\WordEtymology';
+        $this->redirect(['parent-citation/index','id' => $id]);
+    }
+
+    /**
      * @param integer $id
      * @return WordEtymology the loaded model
      * @throws NotFoundHttpException if the model cannot be found
