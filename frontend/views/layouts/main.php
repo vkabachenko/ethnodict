@@ -3,43 +3,66 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use yii\helpers\Html;
-use yii\widgets\Breadcrumbs;
-use frontend\assets\AppAsset;
 use common\widgets\Alert;
-
-AppAsset::register($this);
+use frontend\custom\MainMenu;
+use yii\bootstrap\NavBar;
+use yii\bootstrap\Nav;
 ?>
-<?php $this->beginPage() ?>
-<!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
-<head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-</head>
-<body>
-<?php $this->beginBody() ?>
-<div class="wrap">
+
+<?php $this->beginContent('@frontend/views/layouts/layout.php'); ?>
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
         <?= Alert::widget() ?>
-        <?= $content ?>
+        <?php
+        NavBar::begin([
+            'brandLabel' => false,
+            'id' => 'main-navbar',
+            'options' => ['class' => 'visible-xs navbar-default']
+        ]);
+        NavBar::end();
+        ?>
+        <div class="row">
+            <div id= "main-menu-wrap" class="col-sm-2 hidden-xs">
+                <?= Nav::widget([
+                    'items' => (new MainMenu())->menuItems(),
+                    'options' => ['class' => 'nav nav-pills nav-stacked',
+                    'id' => 'main-menu',
+                    ],
+                ]);
+                ?>
+            </div>
+            <div class="col-sm-10">
+                <?= $content ?>
+            </div>
+        </div>
     </div>
-</div>
+<?php
+$script =
+    <<<JS
+$(window).on('resize',function(){
+    var windowWidth = $(this).width();
 
-<footer class="footer">
-    <div class="container">
-        <p class="pull-left">&copy; <span class="under-construction">Организация</span> <?= date('Y') ?></p>
+    // main menu
+    var mainmenu = $('#main-menu');
+    var parent = mainmenu.parent();
+    if(windowWidth < 768 && parent.is('#main-menu-wrap')) {
+        mainmenu.appendTo('#main-navbar-collapse');
+    };
+    if(windowWidth >= 768 && parent.is('#main-navbar-collapse')) {
+        mainmenu.appendTo('#main-menu-wrap');
+    };
 
-    </div>
-</footer>
+    // header font size
+    if (windowWidth > 1150) {
+        var h1size = 48;
+    } else if (windowWidth >= 768) {
+        h1size = 48*windowWidth/1150;
+    }
+    $('header h1').css('fontSize', h1size);
+});
+$(window).trigger('resize');
+JS;
+$this->registerJs($script);
+?>
+<?php $this->endContent(); ?>
 
-<?php $this->endBody() ?>
-</body>
-</html>
-<?php $this->endPage() ?>
+

@@ -9,6 +9,7 @@ use common\models\parents\FileInterface;
 use common\models\parents\CitationInterface;
 use common\traits\FileTrait;
 use common\behaviors\FileCascadeBehavior;
+use common\models\queries\WordQuery;
 
 
 /**
@@ -38,6 +39,7 @@ class Word extends ActiveRecord implements FileInterface, CitationInterface
     public $folklors_count;
     public $etymologies_count;
     public $combinations_count;
+    public $firstLetter;
 
 
     /**
@@ -85,6 +87,15 @@ class Word extends ActiveRecord implements FileInterface, CitationInterface
             'description' => 'Описание',
             'id_category' => 'Раздел'
         ];
+    }
+
+    /**
+     * @inheritdoc
+     * @return WordQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new WordQuery(get_called_class());
     }
 
     /**
