@@ -20,10 +20,18 @@ use yii\bootstrap\Nav;
         ]);
         NavBar::end();
         ?>
+        <div class="row" id="filter-search">
+            <div id="category-filter" class="col-xs-6">
+                <?= $this->render('category'); ?>
+            </div>
+            <div id="word-search" class="col-xs-6">
+                <p class="pull-right">search</p>
+            </div>
+        </div>
         <div class="row">
             <div id= "main-menu-wrap" class="col-sm-2 hidden-xs">
                 <?= Nav::widget([
-                    'items' => (new MainMenu())->menuItems(),
+                    'items' => (new MainMenu(['idCategory' => \Yii::$app->session->get('currentIdCategory')]))->menuItems(),
                     'options' => ['class' => 'nav nav-pills nav-stacked',
                     'id' => 'main-menu',
                     ],

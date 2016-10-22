@@ -91,4 +91,19 @@ header p {
     text-indent: 16px;
 }
 
+#filter-search {
+    padding: 10px 0;
+}
+
+#filter-search label {
+    margin-right:10px;
+    color: #737373;
+    font-weight: normal;
+}
+
+#filter-search select {
+    width: 250px;
+    color: #737373;
+}
+
 

@@ -34,4 +34,12 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+
+    public function actionCategory()
+    {
+        $idCategory = \Yii::$app->request->post('idCategory');
+        \Yii::$app->session->set('currentIdCategory', $idCategory);
+        $this->redirect(['site/index']);
+    }
+
 }

@@ -13,8 +13,8 @@ class MainMenu extends Object
     const MAX_WORDS_IN_MENU_POINT = 10;
     const DEFAULT_ROUTE = 'site/word';
 
-    /* @var $id_category integer */
-    public $id_category;
+    /* @var $idCategory integer */
+    public $idCategory;
 
     /* @var $_lettersWithWords array */ // ['А'=>['Амбар','Армяк',...],'Б'=>['Балахон','Баня',...],...]
     private $_lettersWithWords;
@@ -25,7 +25,7 @@ class MainMenu extends Object
     public function init()
     {
         $this->_lettersWithWords = Word::find()
-            ->firstLetterAndWord($this->id_category)
+            ->firstLetterAndWord($this->idCategory)
             ->asArray()
             ->all();
         $this->_lettersWithWords = ArrayHelper::map($this->_lettersWithWords,'title',null,'firstLetter');
