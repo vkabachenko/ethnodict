@@ -23,7 +23,7 @@ AppAsset::register($this);
 
 <div class="wrap">
     <header class="hidden-xs">
-        <h1><a href="/">ТРАДИЦИОННЫЙ БЫТ ПСКОВСКИХ КРЕСТЬЯН</a></h1>
+        <h1><?= Html::a('ТРАДИЦИОННЫЙ БЫТ ПСКОВСКИХ КРЕСТЬЯН',['/site/index']); ?></h1>
         <p>Опыт регионального этнолингвистического словаря </p>
     </header>
      <?= $content ?>
