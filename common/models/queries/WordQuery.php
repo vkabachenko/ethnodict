@@ -11,7 +11,7 @@ class WordQuery extends ActiveQuery
     {
         return $this->select(['firstLetter' => new Expression("substring(`title`,1,1)"),'title'])
             ->orderBy('firstLetter,title')
-            ->where(['not',['description' => null]])
+            ->where(['>','description', ''])
             ->andFilterWhere(['id_category' => $category])
             ->distinct();
     }

@@ -77,4 +77,5 @@ class WordVariant extends \yii\db\ActiveRecord
     {
         return $this->hasOne(VariantType::className(), ['id' => 'id_type']);
     }
+
 }

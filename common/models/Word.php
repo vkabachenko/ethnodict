@@ -40,6 +40,8 @@ class Word extends ActiveRecord implements FileInterface, CitationInterface
     public $etymologies_count;
     public $combinations_count;
     public $firstLetter;
+    public $variant_type; // тип варианта в таблице вариантов
+    public $variant_comment;
 
 
     /**
@@ -113,6 +115,14 @@ class Word extends ActiveRecord implements FileInterface, CitationInterface
     public function getWordAccents()
     {
         return $this->hasMany(WordAccent::className(), ['id_word' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getVariants()
+    {
+        return $this->hasMany(WordVariant::className(), ['id_variant' => 'id']);
     }
 
     /**

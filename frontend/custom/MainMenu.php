@@ -11,7 +11,6 @@ class MainMenu extends Object
 {
 
     const MAX_WORDS_IN_MENU_POINT = 10;
-    const DEFAULT_ROUTE = 'site/word';
 
     /* @var $idCategory integer */
     public $idCategory;
@@ -106,7 +105,7 @@ class MainMenu extends Object
      *
      */
 
-    public function menuItems($route = self::DEFAULT_ROUTE, $innerArray = null )
+    public function menuItems($innerArray = null )
     {
         if ($innerArray == null) {
             $innerArray = $this->splitLongLists();
@@ -115,7 +114,7 @@ class MainMenu extends Object
         foreach($innerArray as $letter => $words) {
             $item = ['label' => $letter, 'items' => []];
             foreach($words as $word) {
-                    $item['items'][] = ['label' => $word, 'url' => [$route, 'title' => $word]];
+                    $item['items'][] = ['label' => $word, 'url' => [\Yii::$app->params['routeWord'],'title' => $word]];
             }
             $items[] = $item;
         }

@@ -93,17 +93,28 @@ header p {
 
 #filter-search {
     padding: 10px 0;
+    color: #737373;
 }
 
 #filter-search label {
     margin-right:10px;
-    color: #737373;
     font-weight: normal;
 }
 
 #filter-search select {
     width: 250px;
-    color: #737373;
 }
+
+#word h2 {
+    text-align: center;
+}
+
+#word .description {
+    text-align: justify;
+    text-indent: 16px;
+    font-style: italic;
+}
+
+
 
 
