@@ -1,31 +1,34 @@
 <template>
   <div>
-    <ul>
-      <li v-for="item in items" :key="item.id">
-        {{ item.title }}
-      </li>
-    </ul>
+    <search v-if="items.length > 0" :items="items" @select="onSelect"></search>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import Search from './Search.vue'
 
 export default {
   name: 'Main',
-  data: () => ({
-    items: []
-  }),
+  components: {
+    Search
+  },
+  data () {
+    return {
+      items: [],
+      id: 0
+    }
+  },
   methods: {
-    loadData () {
-      axios.get('/api/words')
-        .then(response => {
-          this.items = response.data
-        })
+    onSelect (text) {
+      this.id = this.items.reduce((prev, curr) => curr.title === text ? curr.id : prev, 0)
     }
   },
   mounted () {
-    this.loadData()
+    axios.get('/api/words')
+      .then(response => {
+        this.items = response.data
+      })
   }
 }
 </script>
