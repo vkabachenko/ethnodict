@@ -40,7 +40,7 @@ return [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
-                ['class' => 'yii\rest\UrlRule', 'controller' => 'word'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => ['word', 'word-accent']],
             ],
         ],
         'user' => [

@@ -11,6 +11,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "alertifyjs": "^1.11.0",
     "awesomplete": "^1.1.2",
     "axios": "^0.17.1",
     "bootstrap": "^3.3.7",
