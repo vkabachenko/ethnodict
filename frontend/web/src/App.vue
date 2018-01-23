@@ -8,6 +8,10 @@
       <router-view/>
     </div>
 
+    <div class="container">
+      <footer>Footer</footer>
+    </div>
+
   </div>
 </template>
 

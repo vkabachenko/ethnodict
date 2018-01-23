@@ -1,17 +1,46 @@
 <template>
-    <div>
-        <word-accent v-if="item" :item="item" :accents="accents"></word-accent>
+    <div v-if="item" >
+        <word-accent :item="item" :accents="accents"></word-accent>
+        <tabs>
+          <tab name="Описание">
+            <word-description :description="item.description"></word-description>
+          </tab>
+          <tab name="Варианты">
+            Варианты
+          </tab>
+          <tab name="Цитаты">
+            Цитаты
+          </tab>
+          <tab name="Сочетания">
+            Сочетания
+          </tab>
+          <tab name="Фольклор">
+            Фольклор
+          </tab>
+          <tab name="Этимология">
+            Этимология
+          </tab>
+          <tab name="Файлы">
+            Файлы
+          </tab>
+        </tabs>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
 import WordAccent from './WordAccent.vue'
+import WordDescription from './WordDescription.vue'
+import {Tabs, Tab} from 'vue-tabs-component'
+import 'vue-tabs-component/docs/resources/tabs-component.css'
 
 export default {
   name: 'Word',
   components: {
-    WordAccent
+    WordAccent,
+    WordDescription,
+    Tabs,
+    Tab
   },
   data () {
     return {
