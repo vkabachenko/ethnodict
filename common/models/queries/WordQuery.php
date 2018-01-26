@@ -7,13 +7,12 @@ use yii\db\Expression;
 
 class WordQuery extends ActiveQuery
 {
-    public function firstLetterAndWord($category = null)
+    public function inList($category = null)
     {
-        return $this->select(['firstLetter' => new Expression("substring(`title`,1,1)"),'title'])
-            ->orderBy('firstLetter,title')
+        return $this
             ->where(['>','description', ''])
             ->andFilterWhere(['id_category' => $category])
-            ->distinct();
+            ->orderBy('title');
     }
 
     /**

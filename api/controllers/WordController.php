@@ -17,7 +17,7 @@ class WordController extends ActiveController
     public function actionIndex()
     {
         return new ActiveDataProvider([
-            'query' => Word::find()->orderBy('title'),
+            'query' => Word::find()->inList(),
             'pagination' => false,
         ]);
     }
