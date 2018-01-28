@@ -44,8 +44,6 @@ return [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => [
                         'word',
-                        'word-accent',
-                        'word-variant',
                         ]],
             ],
         ],

@@ -17,6 +17,8 @@ use Yii;
  */
 class WordCitation extends \yii\db\ActiveRecord
 {
+    public $name_region;
+
     /**
      * @inheritdoc
      */
@@ -64,5 +66,13 @@ class WordCitation extends \yii\db\ActiveRecord
     public function getRegion()
     {
         return $this->hasOne(Region::className(), ['id' => 'id_region']);
+    }
+
+    /**
+     * @return array
+     */
+    public function fields()
+    {
+        return array_merge(parent::fields(), ['name_region']);
     }
 }

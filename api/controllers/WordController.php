@@ -30,6 +30,7 @@ class WordController extends ActiveController
             ->with(['wordVariants' => function(\yii\db\ActiveQuery $query) {
                 $query->orderBy('id_type');
             }])
+            ->with('wordCitation')
             ->one();
 
         return $model;

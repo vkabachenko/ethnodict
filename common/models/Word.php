@@ -142,6 +142,14 @@ class Word extends ActiveRecord implements FileInterface, CitationInterface
         return $this->hasMany(WordCitation::className(), ['id_parent' => 'id']);
     }
 
+    public function getWordCitation()
+    {
+        return $this->hasMany(WordCitation::className(), ['id_parent' => 'id'])
+          ->select(['{{%word_citation}}.*', 'name_region' => '{{%region}}.name'])
+          ->joinWith('region')
+          ->orderBy('name_region, fragment');
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
