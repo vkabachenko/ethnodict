@@ -114,7 +114,8 @@ class Word extends ActiveRecord implements FileInterface, CitationInterface
      */
     public function getWordAccents()
     {
-        return $this->hasMany(WordAccent::className(), ['id_word' => 'id']);
+        return $this->hasMany(WordAccent::className(), ['id_word' => 'id'])
+            ->orderBy('accent_position DESC');
     }
 
     /**
@@ -177,6 +178,15 @@ class Word extends ActiveRecord implements FileInterface, CitationInterface
         } else {
             return false;
         }
+    }
+
+
+    /**
+     * @return array
+     */
+    public function fields()
+    {
+        return array_merge(parent::fields(), ['wordAccents']);
     }
 
 }

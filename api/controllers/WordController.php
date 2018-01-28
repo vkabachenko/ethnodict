@@ -11,7 +11,7 @@ class WordController extends ActiveController
 
     public function actions()
     {
-        return array_intersect_key(parent::actions(), array_flip(['view']));
+          return [];
     }
 
     public function actionIndex()
@@ -21,4 +21,19 @@ class WordController extends ActiveController
             'pagination' => false,
         ]);
     }
+
+    public function actionView($id)
+    {
+       $model = Word::find()
+            ->where(['id' => $id])
+            ->with('wordAccents')
+            ->with(['wordVariants' => function(\yii\db\ActiveQuery $query) {
+                $query->orderBy('id_type');
+            }])
+            ->one();
+
+        return $model;
+    }
+
+
 }

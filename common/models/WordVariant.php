@@ -78,4 +78,12 @@ class WordVariant extends \yii\db\ActiveRecord
         return $this->hasOne(VariantType::className(), ['id' => 'id_type']);
     }
 
+    /**
+     * @return array
+     */
+    public function fields()
+    {
+        return array_merge(parent::fields(), ['variant', 'type']);
+    }
+
 }

@@ -1,12 +1,14 @@
 <template>
     <div v-if="item" >
-        <word-accent :item="item" :accents="accents"></word-accent>
+        <h2>
+          <word-accent :item="item"></word-accent>
+        </h2>
         <tabs>
           <tab name="Описание">
             <word-description :description="item.description"></word-description>
           </tab>
           <tab name="Варианты">
-            Варианты
+            <word-variants :variants="item.wordVariants"></word-variants>
           </tab>
           <tab name="Цитаты">
             Цитаты
@@ -31,6 +33,7 @@
 import axios from 'axios'
 import WordAccent from './WordAccent.vue'
 import WordDescription from './WordDescription.vue'
+import WordVariants from './WordVariants.vue'
 import {Tabs, Tab} from 'vue-tabs-component'
 import 'vue-tabs-component/docs/resources/tabs-component.css'
 
@@ -39,27 +42,27 @@ export default {
   components: {
     WordAccent,
     WordDescription,
+    WordVariants,
     Tabs,
     Tab
   },
   data () {
     return {
-      item: null,
-      accents: []
+      item: null
     }
   },
   props: {
     id: String
   },
   mounted () {
-    axios.all([
-      axios.get('/api/words/' + this.id),
-      axios.get('/api/word-accents/' + this.id)
-    ])
-      .then(axios.spread((respWord, respAccent) => {
-        this.item = respWord.data
-        this.accents = respAccent.data
-      }))
+    axios.get('/api/words/' + this.id, {
+      params: {
+        expand: 'wordVariants'
+      }
+    })
+      .then(response => {
+        this.item = response.data
+      })
   }
 }
 </script>
