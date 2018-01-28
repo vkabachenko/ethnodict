@@ -4,9 +4,9 @@
       <h3> {{ variantType.name }} </h3>
       <div v-for="variant in variants" :key="variant.id">
           <p v-if="variant.type.id === variantType.id">
-              <router-link v-if="variant.variant.description > ''" :to="`/word/${variant.variant.id}`">
+              <a v-if="variant.variant.description > ''" :href="`/word/${variant.variant.id}`">
                   <word-accent :item="variant.variant"></word-accent>
-              </router-link>
+              </a>
               <word-accent v-else :item="variant.variant"></word-accent>
             &nbsp;
             <span v-if="variant.comment > ''">
