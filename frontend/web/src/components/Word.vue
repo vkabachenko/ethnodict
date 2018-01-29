@@ -16,14 +16,11 @@
           <tab name="Сочетания" :is-disabled="item.wordCombinations.length === 0">
             <word-combinations :combinations="item.wordCombinations"></word-combinations>
           </tab>
-          <tab name="Фольклор">
-            Фольклор
+          <tab name="Фольклор" :is-disabled="item.wordApiFolklors.length === 0">
+              <word-folklors :folklors="item.wordApiFolklors"></word-folklors>
           </tab>
           <tab name="Этимология">
             Этимология
-          </tab>
-          <tab name="Файлы">
-            Файлы
           </tab>
         </tabs>
     </div>
@@ -36,6 +33,7 @@ import WordDescription from './WordDescription.vue'
 import WordVariants from './WordVariants.vue'
 import ItemCitations from './ItemCitations.vue'
 import WordCombinations from './WordCombinations.vue'
+import WordFolklors from './WordFolklors.vue'
 import {Tabs, Tab} from 'vue-tabs-component'
 import 'vue-tabs-component/docs/resources/tabs-component.css'
 
@@ -47,6 +45,7 @@ export default {
     WordVariants,
     ItemCitations,
     WordCombinations,
+    WordFolklors,
     Tabs,
     Tab
   },
@@ -62,7 +61,7 @@ export default {
     fetchData () {
       axios.get('/api/words/' + this.id, {
         params: {
-          expand: 'wordVariants,wordCitations,wordCombinations'
+          expand: 'wordVariants,wordCitations,wordCombinations,wordApiFolklors'
         }
       })
         .then(response => {

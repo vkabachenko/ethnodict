@@ -166,6 +166,21 @@ class Word extends ActiveRecord implements FileInterface, CitationInterface
         return $this->hasMany(WordFolklore::className(), ['id_word' => 'id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getWordApiFolklors()
+    {
+        return $this->hasMany(WordFolklore::className(), ['id_word' => 'id'])
+            ->select([
+                '{{%word_folklore}}.*',
+                'name_region' => '{{%region}}.name',
+                'name_folklore' => '{{%folklore}}.name'
+            ])
+            ->joinWith('region')
+            ->joinWith('folklore')
+            ->orderBy('name_region, name_folklore, fragment');
+    }
 
     /**
      * @return \yii\db\ActiveQuery

@@ -24,6 +24,8 @@ class WordFolklore extends \yii\db\ActiveRecord  implements FileInterface
 {
     use FileTrait;
 
+    public $name_region;
+    public $name_folklore;
     /**
      * @inheritdoc
      */
@@ -93,6 +95,14 @@ class WordFolklore extends \yii\db\ActiveRecord  implements FileInterface
     public function getFolklore()
     {
         return $this->hasOne(Folklore::className(), ['id' => 'id_folklore']);
+    }
+
+    /**
+     * @return array
+     */
+    public function fields()
+    {
+        return array_merge(parent::fields(), ['name_region', 'name_folklore']);
     }
 
 }
