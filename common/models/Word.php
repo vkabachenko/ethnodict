@@ -142,7 +142,7 @@ class Word extends ActiveRecord implements FileInterface, CitationInterface
         return $this->hasMany(WordCitation::className(), ['id_parent' => 'id']);
     }
 
-    public function getWordCitation()
+    public function getWordCitations()
     {
         return $this->hasMany(WordCitation::className(), ['id_parent' => 'id'])
           ->select(['{{%word_citation}}.*', 'name_region' => '{{%region}}.name'])

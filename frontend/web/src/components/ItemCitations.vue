@@ -4,7 +4,7 @@
     <p>
       <span> {{ citation.fragment }}</span>
       &nbsp;
-      <span>( {{ citation.name_region }} )</span>
+      <span>({{ citation.name_region }})</span>
     </p>
   </div>
 </div>
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'WordCitations',
+  name: 'ItemCitations',
   props: {
     citations: {
       type: Array,
@@ -23,5 +23,10 @@ export default {
 </script>
 
 <style scoped>
+
+.child {
+  text-indent: 8px;
+  color: #999;
+}
 
 </style>

@@ -10,7 +10,7 @@
               <word-accent v-else :item="variant.variant"></word-accent>
             &nbsp;
             <span v-if="variant.comment > ''">
-                ( {{ variant.comment }} )
+                ({{ variant.comment }})
             </span>
           </p>
       </div>

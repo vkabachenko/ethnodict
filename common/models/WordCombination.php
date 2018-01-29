@@ -75,4 +75,23 @@ class WordCombination extends \yii\db\ActiveRecord implements CitationInterface
         return $this->hasMany(CombinationCitation::className(), ['id_parent' => 'id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCombinationCitations()
+    {
+        return $this->hasMany(CombinationCitation::className(), ['id_parent' => 'id'])
+            ->select(['{{%combination_citation}}.*', 'name_region' => '{{%region}}.name'])
+            ->joinWith('region')
+            ->orderBy('name_region, fragment');
+    }
+
+    /**
+     * @return array
+     */
+    public function fields()
+    {
+        return array_merge(parent::fields(), ['combinationCitations']);
+    }
+
 }
