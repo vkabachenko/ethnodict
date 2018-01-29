@@ -17,6 +17,7 @@ use Yii;
  */
 class EtymologyCitation extends \yii\db\ActiveRecord
 {
+    public $name_region;
     /**
      * @inheritdoc
      */
@@ -64,5 +65,13 @@ class EtymologyCitation extends \yii\db\ActiveRecord
     public function getWordEtymology()
     {
         return $this->hasOne(WordEtymology::className(), ['id' => 'id_parent']);
+    }
+
+    /**
+     * @return array
+     */
+    public function fields()
+    {
+        return array_merge(parent::fields(), ['name_region']);
     }
 }

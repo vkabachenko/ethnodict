@@ -17,10 +17,10 @@
             <word-combinations :combinations="item.wordCombinations"></word-combinations>
           </tab>
           <tab name="Фольклор" :is-disabled="item.wordApiFolklors.length === 0">
-              <word-folklors :folklors="item.wordApiFolklors"></word-folklors>
+            <word-folklors :folklors="item.wordApiFolklors"></word-folklors>
           </tab>
-          <tab name="Этимология">
-            Этимология
+          <tab name="Этимология" :is-disabled="item.wordApiEtymologies.length === 0">
+            <word-etymologies :sources="item.wordApiEtymologies"></word-etymologies>
           </tab>
         </tabs>
     </div>
@@ -34,6 +34,7 @@ import WordVariants from './WordVariants.vue'
 import ItemCitations from './ItemCitations.vue'
 import WordCombinations from './WordCombinations.vue'
 import WordFolklors from './WordFolklors.vue'
+import WordEtymologies from './WordEtymologies.vue'
 import {Tabs, Tab} from 'vue-tabs-component'
 import 'vue-tabs-component/docs/resources/tabs-component.css'
 
@@ -46,6 +47,7 @@ export default {
     ItemCitations,
     WordCombinations,
     WordFolklors,
+    WordEtymologies,
     Tabs,
     Tab
   },
@@ -61,7 +63,7 @@ export default {
     fetchData () {
       axios.get('/api/words/' + this.id, {
         params: {
-          expand: 'wordVariants,wordCitations,wordCombinations,wordApiFolklors'
+          expand: 'wordVariants,wordCitations,wordCombinations,wordApiFolklors,wordApiEtymologies'
         }
       })
         .then(response => {

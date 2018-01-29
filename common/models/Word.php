@@ -191,6 +191,19 @@ class Word extends ActiveRecord implements FileInterface, CitationInterface
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getWordApiEtymologies()
+    {
+        return $this->hasMany(WordEtymology::className(), ['id_word' => 'id'])
+            ->select([
+                '{{%word_etymology}}.*',
+                'text_source' => '{{%literary_source}}.long_link'
+            ])
+            ->joinWith('literarySource');
+    }
+
+    /**
      * @inheritdoc
      */
     public function beforeSave($insert)

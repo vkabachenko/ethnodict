@@ -33,6 +33,7 @@ class WordController extends ActiveController
             ->with('wordCitations')
             ->with('wordCombinations')
             ->with('wordApiFolklors')
+            ->with('wordApiEtymologies')
             ->one();
 
         return $model;

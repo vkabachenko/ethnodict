@@ -19,6 +19,8 @@ use common\models\parents\CitationInterface;
  */
 class WordEtymology extends \yii\db\ActiveRecord implements CitationInterface
 {
+    public $text_source;
+
     /**
      * @inheritdoc
      */
@@ -87,5 +89,23 @@ class WordEtymology extends \yii\db\ActiveRecord implements CitationInterface
         return $this->hasMany(EtymologyCitation::className(), ['id_parent' => 'id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEtymologyCitations()
+    {
+        return $this->hasMany(EtymologyCitation::className(), ['id_parent' => 'id'])
+            ->select(['{{%etymology_citation}}.*', 'name_region' => '{{%region}}.name'])
+            ->joinWith('region')
+            ->orderBy('name_region, fragment');
+    }
+
+    /**
+     * @return array
+     */
+    public function fields()
+    {
+        return array_merge(parent::fields(), ['text_source', 'etymologyCitations']);
+    }
 
 }
