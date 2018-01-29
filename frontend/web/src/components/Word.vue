@@ -3,7 +3,7 @@
         <h2>
           <word-accent :item="item"></word-accent>
         </h2>
-        <tabs>
+        <tabs :options="{ useUrlFragment: false }">
           <tab name="Описание">
             <word-description :description="item.description"></word-description>
           </tab>
@@ -56,15 +56,23 @@ export default {
   props: {
     id: String
   },
-  mounted () {
-    axios.get('/api/words/' + this.id, {
-      params: {
-        expand: 'wordVariants,wordCitation'
-      }
-    })
-      .then(response => {
-        this.item = response.data
+  methods: {
+    fetchData () {
+      axios.get('/api/words/' + this.id, {
+        params: {
+          expand: 'wordVariants,wordCitation'
+        }
       })
+        .then(response => {
+          this.item = response.data
+        })
+    }
+  },
+  watch: {
+    '$route': 'fetchData'
+  },
+  created () {
+    this.fetchData()
   }
 }
 </script>
