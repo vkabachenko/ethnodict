@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use Yii;
+use common\models\parents\ParentCitation;
 
 /**
  * This is the model class for table "{{%word_citation}}".
@@ -15,9 +15,8 @@ use Yii;
  * @property Region $region
  * @property Word $word
  */
-class WordCitation extends \yii\db\ActiveRecord
+class WordCitation extends ParentCitation
 {
-    public $name_region;
 
     /**
      * @inheritdoc
@@ -60,19 +59,4 @@ class WordCitation extends \yii\db\ActiveRecord
         return $this->hasOne(Word::className(), ['id' => 'id_parent']);
     }
 
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRegion()
-    {
-        return $this->hasOne(Region::className(), ['id' => 'id_region']);
-    }
-
-    /**
-     * @return array
-     */
-    public function fields()
-    {
-        return array_merge(parent::fields(), ['name_region']);
-    }
 }
