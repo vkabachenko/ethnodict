@@ -34,6 +34,7 @@ export default {
     axios.get('/api/words')
       .then(response => {
         this.items = response.data
+        this.$store.commit('loadItems', this.items)
       })
   }
 }
