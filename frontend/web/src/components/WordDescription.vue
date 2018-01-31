@@ -1,17 +1,19 @@
 <template>
     <div>
         <div>{{ item.description }}</div>
-        <word-download :files="item.wordFiles"></word-download>
+        <item-download :files="item.wordFiles">
+            <button class="btn btn-success">Приложения</button>
+        </item-download>
     </div>
 </template>
 
 <script>
-import WordDownload from './WordDownload.vue'
+import ItemDownload from './ItemDownload.vue'
 
 export default {
   name: 'WordDescription',
   components: {
-    WordDownload
+    ItemDownload
   },
   props: {
     item: {

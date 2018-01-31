@@ -1,9 +1,9 @@
 <template>
 
-<div v-if="files.length > 0">
+<div v-if="files.length > 0" :class="{span: isSpan}">
     <dropdown :visible="visible" @clickout="visible = false">
         <span class="link" @click="visible = !visible">
-            <button class="btn btn-success">Приложения</button>
+            <slot></slot>
         </span>
         <div slot="dropdown" class="dialog">
             <ul class="menu-list">
@@ -22,7 +22,7 @@ import dropdown from 'vue-my-dropdown'
 import Download from './Download.vue'
 
 export default {
-  name: 'WordDownload',
+  name: 'ItemDownload',
   components: {
     dropdown,
     Download
@@ -36,6 +36,10 @@ export default {
     files: {
       type: Array,
       required: true
+    },
+    isSpan: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -44,5 +48,8 @@ export default {
 <style scoped>
     .menu-list {
         list-style-type: none;
+    }
+    .span {
+      display: inline;
     }
 </style>

@@ -5,19 +5,21 @@
             <span> {{ folklor.fragment }}</span>
             <span class="name-folklore">{{ folklor.name_folklore }}</span>
             <span v-if="folklor.name_region">({{ folklor.name_region }})</span>
-            <folklore-download :files="folklor.folkloreFiles"></folklore-download>
+            <item-download :isSpan="true" :files="folklor.folkloreFiles">
+              <span class="glyphicon glyphicon-download"></span>
+            </item-download>
         </p>
     </div>
   </div>
 </template>
 
 <script>
-import FolkloreDownload from './FolkloreDownload'
+import ItemDownload from './ItemDownload'
 
 export default {
   name: 'WordFolklors',
   components: {
-    FolkloreDownload
+    ItemDownload
   },
   props: {
     folklors: {
