@@ -5,7 +5,7 @@
     <div slot="dropdown" class="dialog">
         <aside class="menu">
             <ul class="menu-list">
-                <li v-for="value in list" :key="value.id">
+                <li v-for="value in list" :key="value.id" @click="visible = false">
                     <router-link :to="`/word/${value.id}`">{{ value.title }}</router-link>
                 </li>
             </ul>
