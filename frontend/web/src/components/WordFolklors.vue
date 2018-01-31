@@ -3,18 +3,22 @@
     <div v-for="folklor in folklors" :key="folklor.id">
         <p>
             <span> {{ folklor.fragment }}</span>
-            &nbsp;
             <span class="name-folklore">{{ folklor.name_folklore }}</span>
-            &nbsp;
             <span v-if="folklor.name_region">({{ folklor.name_region }})</span>
+            <folklore-download :files="folklor.folkloreFiles"></folklore-download>
         </p>
     </div>
   </div>
 </template>
 
 <script>
+import FolkloreDownload from './FolkloreDownload'
+
 export default {
   name: 'WordFolklors',
+  components: {
+    FolkloreDownload
+  },
   props: {
     folklors: {
       type: Array,

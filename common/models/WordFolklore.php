@@ -98,11 +98,24 @@ class WordFolklore extends \yii\db\ActiveRecord  implements FileInterface
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFolkloreFiles()
+    {
+        return $this->hasMany(File::className(), ['id' => 'id_file'])
+            ->viaTable('{{%parent_file}}', ['id_parent' => 'id'],
+                function($q) {
+                    /* @var $q \yii\db\ActiveQuery */
+                    $q->andWhere(['parent_namespace' => $this->className()]);
+                });
+    }
+
+    /**
      * @return array
      */
     public function fields()
     {
-        return array_merge(parent::fields(), ['name_region', 'name_folklore']);
+        return array_merge(parent::fields(), ['name_region', 'name_folklore', 'folkloreFiles']);
     }
 
 }
