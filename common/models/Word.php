@@ -204,6 +204,19 @@ class Word extends ActiveRecord implements FileInterface, CitationInterface
     }
 
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getWordFiles()
+    {
+        return $this->hasMany(File::className(), ['id' => 'id_file'])
+            ->viaTable('{{%parent_file}}', ['id_parent' => 'id'],
+                function($q) {
+                    /* @var $q \yii\db\ActiveQuery */
+                    $q->andWhere(['parent_namespace' => $this->className()]);
+                });
+    }
+
+    /**
      * @inheritdoc
      */
     public function beforeSave($insert)

@@ -6,7 +6,7 @@
             </h2>
             <tabs :options="{ useUrlFragment: false }">
               <tab name="Описание">
-                <word-description :description="item.description"></word-description>
+                <word-description :item="item"></word-description>
               </tab>
               <tab name="Варианты" :is-disabled="item.wordVariants.length === 0">
                 <word-variants :variants="item.wordVariants"></word-variants>
@@ -70,7 +70,7 @@ export default {
     fetchData () {
       axios.get('/api/words/' + this.id, {
         params: {
-          expand: 'wordVariants,wordCitations,wordCombinations,wordApiFolklors,wordApiEtymologies'
+          expand: 'wordVariants,wordCitations,wordCombinations,wordApiFolklors,wordApiEtymologies,wordFiles'
         }
       })
         .then(response => {
