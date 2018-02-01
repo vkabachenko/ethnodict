@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import {apiUrl} from '@/api-server.js'
 import axios from 'axios'
 import Search from './Search.vue'
 import alertifyjs from 'alertifyjs'
@@ -31,7 +32,7 @@ export default {
     }
   },
   mounted () {
-    axios.get('/api/words')
+    axios.get(apiUrl + 'words')
       .then(response => {
         this.items = response.data
         this.$store.commit('loadItems', this.items)

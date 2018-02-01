@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import {apiUrl} from '@/api-server.js'
 import axios from 'axios'
 import WordAccent from './WordAccent.vue'
 import WordDescription from './WordDescription.vue'
@@ -68,7 +69,7 @@ export default {
   },
   methods: {
     fetchData () {
-      axios.get('/api/words/' + this.id, {
+      axios.get(apiUrl + 'words/' + this.id, {
         params: {
           expand: 'wordVariants,wordCitations,wordCombinations,wordApiFolklors,wordApiEtymologies,wordFiles'
         }

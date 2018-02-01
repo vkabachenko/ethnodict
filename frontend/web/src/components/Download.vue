@@ -19,7 +19,7 @@ export default {
       return this.file.description ? this.file.description : this.file.upload_file
     },
     filePath () {
-      let path = '/upload/'
+      let path = '/uploads/'
       let extension = this.file.upload_file.split('.').pop()
       return path + String(this.file.id) + '.' + extension
     }

@@ -42,14 +42,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     watchOptions: {
       poll: config.dev.poll,
     },
-    proxy: {
-      "/api": {
-        "target": 'http://etnodict.api',
-        "pathRewrite": { '^/api': '' },
-        "changeOrigin": true,
-        "secure": false
-      }
-    }
   },
   plugins: [
     new webpack.DefinePlugin({
