@@ -3,7 +3,7 @@
     <header class="header">
       <div class="container">
         <div class="logo">
-          <img src="images/logo.png" alt="" class="logo__img">
+          <img src="./assets/img/logo.png" alt="" class="logo__img">
         </div>
         <nav class="nav">
           <ul class="nav__list">
@@ -34,7 +34,7 @@
     <footer>
       <div class="container">
         <div class="logo">
-          <img src="images/logo.png" alt="" class="logo__img">
+          <img src="./assets/img/logo.png" alt="" class="logo__img">
         </div>
         <div class="pskovgu-logo">
           <img src="images/pskgu-icon.png" alt="" class="pskovgu-logo__img">
