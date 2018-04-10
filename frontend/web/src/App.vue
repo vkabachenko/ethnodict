@@ -28,9 +28,9 @@
       </div>
     </header>
 
-    <div class="container">
-      <router-view/>
-    </div>
+      <div class="rout-views">
+        <router-view/>
+      </div>
     <footer class="footer">
       <div class="container">
         <div class="logo">
@@ -228,12 +228,10 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 50px;
   width: 100%;
   height: 216px;
-  position: absolute;
-  bottom: 0;
+  /*position: absolute;*/
+  /*bottom: 0;*/
   margin-top: 30px;
 }
-
-
 
 .container:after {
   content: "";
