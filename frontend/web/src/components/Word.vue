@@ -1,34 +1,39 @@
 <template>
+  <div class="container">
     <div v-if="item" class="row">
-        <div class="col-md-8">
+      <div class="col-md-8">
+        <!--<h2>-->
+          <!--<word-accent :item="item"></word-accent>-->
+        <!--</h2>-->
+        <tabs :options="{ useUrlFragment: false }">
+          <tab name="Описание">
             <h2>
               <word-accent :item="item"></word-accent>
             </h2>
-            <tabs :options="{ useUrlFragment: false }">
-              <tab name="Описание">
-                <word-description :item="item"></word-description>
-              </tab>
-              <tab name="Варианты" :is-disabled="item.wordVariants.length === 0">
-                <word-variants :variants="item.wordVariants"></word-variants>
-              </tab>
-              <tab name="Цитаты" :is-disabled="item.wordCitations.length === 0">
-                <item-citations :citations="item.wordCitations"></item-citations>
-              </tab>
-              <tab name="Сочетания" :is-disabled="item.wordCombinations.length === 0">
-                <word-combinations :combinations="item.wordCombinations"></word-combinations>
-              </tab>
-              <tab name="Фольклор" :is-disabled="item.wordApiFolklors.length === 0">
-                <word-folklors :folklors="item.wordApiFolklors"></word-folklors>
-              </tab>
-              <tab name="Этимология" :is-disabled="item.wordApiEtymologies.length === 0">
-                <word-etymologies :sources="item.wordApiEtymologies"></word-etymologies>
-              </tab>
-            </tabs>
-        </div>
-        <div class="col-md-4">
-          <alphabet-menu></alphabet-menu>
-        </div>
+            <word-description :item="item"></word-description>
+          </tab>
+          <tab name="Варианты" :is-disabled="item.wordVariants.length === 0">
+            <word-variants :variants="item.wordVariants"></word-variants>
+          </tab>
+          <tab name="Цитаты" :is-disabled="item.wordCitations.length === 0">
+            <item-citations :citations="item.wordCitations"></item-citations>
+          </tab>
+          <tab name="Сочетания" :is-disabled="item.wordCombinations.length === 0">
+            <word-combinations :combinations="item.wordCombinations"></word-combinations>
+          </tab>
+          <tab name="Фольклор" :is-disabled="item.wordApiFolklors.length === 0">
+            <word-folklors :folklors="item.wordApiFolklors"></word-folklors>
+          </tab>
+          <tab name="Этимология" :is-disabled="item.wordApiEtymologies.length === 0">
+            <word-etymologies :sources="item.wordApiEtymologies"></word-etymologies>
+          </tab>
+        </tabs>
+      </div>
+      <div class="col-md-4">
+        <alphabet-menu></alphabet-menu>
     </div>
+  </div>
+  </div>
 </template>
 
 <script>
