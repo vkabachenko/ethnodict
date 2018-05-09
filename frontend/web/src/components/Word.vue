@@ -1,11 +1,8 @@
 <template>
   <div class="container">
-    <div v-if="item" class="row">
+    <div class="row">
       <div class="col-md-8">
-        <!--<h2>-->
-          <!--<word-accent :item="item"></word-accent>-->
-        <!--</h2>-->
-        <tabs :options="{ useUrlFragment: false }">
+        <tabs :options="{ useUrlFragment: false }" v-if="item">
           <tab name="Описание">
             <h2>
               <word-accent :item="item"></word-accent>
@@ -74,14 +71,16 @@ export default {
   },
   methods: {
     fetchData () {
-      axios.get(apiUrl + 'words/' + this.id, {
-        params: {
-          expand: 'wordVariants,wordCitations,wordCombinations,wordApiFolklors,wordApiEtymologies,wordFiles'
-        }
-      })
-        .then(response => {
-          this.item = response.data
+      if (this.id) {
+        axios.get(apiUrl + 'words/' + this.id, {
+          params: {
+            expand: 'wordVariants,wordCitations,wordCombinations,wordApiFolklors,wordApiEtymologies,wordFiles'
+          }
         })
+          .then(response => {
+            this.item = response.data
+          })
+      }
     }
   },
   watch: {

@@ -8,13 +8,13 @@
         <nav class="nav">
           <ul class="nav__list">
             <li class="nav__item">
-              <a href="index.html" class="nav__link">Главная</a>
+              <router-link to="/" class="nav__link">Главная</router-link>
             </li>
             <li class="nav__item">
-              <a href="listofwords.html" class="nav__link">Список слов</a>
+              <router-link to="/word" class="nav__link">Список слов</router-link>
             </li>
             <li class="nav__item">
-              <a href="contacts.html" class="nav__link">Контакты</a>
+              <router-link to="/contacts" class="nav__link">Контакты</router-link>
             </li>
           </ul>
         </nav>
@@ -28,9 +28,10 @@
       </div>
     </header>
 
-      <div class="rout-views">
-        <router-view/>
-      </div>
+    <div class="rout-views">
+      <router-view/>
+    </div>
+
     <footer class="footer">
       <div class="container">
         <div class="logo">
