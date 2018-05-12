@@ -86,7 +86,8 @@ export default {
   },
   data () {
     return {
-      items: []
+      items: [],
+      categories: []
     }
   },
   methods: {
@@ -100,11 +101,13 @@ export default {
     }
   },
   mounted () {
-    axios.get(apiUrl + 'words')
-      .then(response => {
-        this.items = response.data
+    axios.all([axios.get(apiUrl + 'words'), axios.get(apiUrl + 'category')])
+      .then(axios.spread((responseWord, responseCategory) => {
+        this.items = responseWord.data
         this.$store.commit('loadItems', this.items)
-      })
+        this.categories = responseCategory.data
+        this.$store.commit('loadCategories', this.categories)
+      }))
   }
 }
 </script>

@@ -1,28 +1,26 @@
 <template>
+
   <div class="test">
-    <form class="category-list">
-      <select name="">
-        <option value="">Все категории</option>
-        <option value="">Постройки. Традиционное жилище</option>
-        <option value="">Прядение. Ткачество. Домотканое полотно</option>
-        <option value="">Традиционная одежда, обувь</option>
-        <option value="">Традиционная пища</option>
-      </select>
-    </form>
+
+    <select-category @input="createMenu"></select-category>
+
     <div class="alphabet__list">
       <span v-for="(letterList, letterValue) in menuList" :key="letterValue" class="alphabet-block__item">
-      <letter-dropdown :item="letterValue" :list="letterList"></letter-dropdown>
-    </span>
+        <letter-dropdown :item="letterValue" :list="letterList"></letter-dropdown>
+      </span>
     </div>
   </div>
+
 </template>
 
 <script>
+import SelectCategory from './SelectCategory'
 import LetterDropdown from './LetterDropdown'
 
 export default {
   name: 'AlphabetMenu',
   components: {
+    SelectCategory,
     LetterDropdown
   },
   data () {
@@ -31,8 +29,12 @@ export default {
     }
   },
   methods: {
-    createMenu () {
-      for (let item of this.$store.state.items) {
+    createMenu (selectedCategoryId) {
+      this.menuList = {}
+      let items = selectedCategoryId
+        ? this.$store.state.items.filter(item => Number(item.id_category) === Number(selectedCategoryId))
+        : this.$store.state.items
+      for (let item of items) {
         let letter = item.title[0]
         if (this.menuList[letter] === undefined) {
           this.menuList[letter] = [item]
@@ -40,6 +42,11 @@ export default {
           this.menuList[letter].push(item)
         }
       }
+    }
+  },
+  watch: {
+    selectedCategory: (newf, oldf) => {
+      this.createMenu()
     }
   },
   created () {
@@ -62,19 +69,6 @@ export default {
   margin-left: 10px;
   margin-top: 10px;
   /*position: relative;*/
-}
-
-.category-list {
-  width: 330px;
-  margin-left: 30px;
-  margin-top: 65px;
-}
-
-.category-list select {
-  height: 50px;
-  padding: 10px;
-  display: block;
-  width: 100%;
 }
 
 </style>
