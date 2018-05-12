@@ -44,11 +44,6 @@ export default {
       }
     }
   },
-  watch: {
-    selectedCategory: (newf, oldf) => {
-      this.createMenu()
-    }
-  },
   created () {
     this.createMenu()
   }
