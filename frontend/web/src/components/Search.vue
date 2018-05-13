@@ -1,8 +1,8 @@
 <template>
 <div>
   <form action="" class="hero__search">
-    <input class="awesomplete search-input" ref="search" @keyup.enter="onEnter" @awesomplete-select="onSelect" placeholder="НАЙТИ СЛОВО">
-    <button class="hero-submit">
+    <input class="awesomplete search-input" ref="search" @keypress.enter.prevent="onEnter" @awesomplete-select="onSelect" placeholder="НАЙТИ СЛОВО">
+    <button class="hero-submit" @click.prevent="onClick">
       <i class="fa fa-search" aria-hidden="true"></i>
     </button>
   </form>
@@ -32,6 +32,9 @@ export default {
     },
     onSelect (event) {
       this.$emit('select', event.text.value)
+    },
+    onClick (event) {
+      this.$emit('select', this.$refs.search.value)
     }
   },
   mounted () {
