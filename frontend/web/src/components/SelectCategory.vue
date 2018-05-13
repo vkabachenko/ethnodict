@@ -1,7 +1,7 @@
 <template>
 
         <form class="category-list">
-            <select name="" :value="value" @change="$emit('input', $event.target.value)">
+            <select name="" @change="$emit('input', $event.target.value)">
                 <option value="">Все категории</option>
                 <option v-for="option in $store.state.categories" :value="option.id" :key="option.id">
                     {{ option.name }}
@@ -14,10 +14,7 @@
 <script>
 
 export default {
-  name: 'SelectCategory',
-  props: {
-    value: String
-  }
+  name: 'SelectCategory'
 }
 
 </script>
