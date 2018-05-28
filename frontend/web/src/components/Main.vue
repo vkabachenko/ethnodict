@@ -115,7 +115,7 @@ export default {
 <style>
 
 body {
-  background-image: url(../assets/img/pattern.png);
+  background-image: url(../assets/img/main-bg.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -185,16 +185,26 @@ body {
   .acknowledgement {
     width: 500px;
     float: left;
+    background-image: url("../assets/img/header-bg.jpg");
+    background-position: 0 0;
+    background-repeat: repeat;
+    padding: 25px;
+    color: #5f5b5b;
   }
 
   .cast {
     width: 500px;
     float: right;
+    background-image: url("../assets/img/header-bg.jpg");
+    background-position: 0 0;
+    background-repeat: repeat;
+    padding: 25px;
+    color: #5f5b5b;
   }
 
   .acknowledgement__title,.cast__title {
     margin-bottom: 40px;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: bold;
     text-transform: uppercase;
   }
