@@ -121,7 +121,7 @@ body {
 }
 
 .hero {
-  background-image: url("../assets/img/heroo1.jpg");
+  background-image: url("../assets/img/herobg1.jpg");
   background-position: 0 0;
   background-size: cover;
   background-repeat: no-repeat;
