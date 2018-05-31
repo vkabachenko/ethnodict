@@ -190,6 +190,7 @@ body {
     background-repeat: repeat;
     padding: 25px;
     color: #5f5b5b;
+    height: 1180px;
   }
 
   .cast {
@@ -200,6 +201,7 @@ body {
     background-repeat: repeat;
     padding: 25px;
     color: #5f5b5b;
+    height: 1180px;
   }
 
   .acknowledgement__title,.cast__title {
@@ -212,5 +214,4 @@ body {
   .acknowledgement__text,.cast__text {
     font-weight: 600;
   }
-
 </style>
