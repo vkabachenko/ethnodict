@@ -114,6 +114,31 @@ export default {
 
 <style>
 
+.ajs-header.ajs-header {
+  background: #c31212;
+  color: white;
+  font-size: 18px;
+}
+
+.ajs-commands.ajs-commands {
+  margin: -13px 8px 0 0;
+}
+
+.ajs-body.ajs-body {
+  margin-left: -16px;
+}
+
+.ajs-content.ajs-content {
+  color: #c31212;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.ajs-button.ajs-ok {
+  background: #c31212;
+  color: wheat;
+}
+
 body {
   background-image: url(../assets/img/main-bg.jpg);
   background-position: center;
