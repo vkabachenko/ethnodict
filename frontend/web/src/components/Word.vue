@@ -46,7 +46,6 @@ import WordEtymologies from './WordEtymologies.vue'
 import AlphabetMenu from './AlphabetMenu.vue'
 import {Tabs, Tab} from 'vue-tabs-component'
 import 'vue-tabs-component/docs/resources/tabs-component.css'
-import ItemDownload from './ItemDownload.vue'
 
 export default {
   name: 'Word',
@@ -60,8 +59,7 @@ export default {
     WordEtymologies,
     AlphabetMenu,
     Tabs,
-    Tab,
-    ItemDownload
+    Tab
   },
   data () {
     return {
