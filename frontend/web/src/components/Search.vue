@@ -48,7 +48,7 @@ export default {
 .hero__search {
   display: inline-block;
   width: 1000px;
-  margin-top: 140px;
+  margin-top: 30px;
   margin-bottom: 12px;
   background: rgba(255, 255, 255, 0.30);
   height: 311px;
