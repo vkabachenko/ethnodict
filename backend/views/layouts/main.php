@@ -27,18 +27,13 @@ AppAsset::register($this);
 
 <div class="wrap">
     <?php
-    NavBar::begin([
-        'brandLabel' => Html::tag('span','Организация',['class' => 'under-construction']),
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
+    NavBar::begin();
     $menuItems = [
         ['label' => 'Главная', 'url' => ['/site/index'],],
         ['label' => 'Районы', 'url' => ['/region/index'],],
         ['label' => 'Фольклор', 'url' => ['/folklore/index'],],
         ['label' => 'Источники', 'url' => ['/literary-source/index'],],
+        ['label' => 'Сообщения', 'url' => ['/feedback/index'],],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Войти', 'url' => ['/site/login']];
@@ -71,8 +66,6 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; <span class="under-construction">Организация</span> <?= date('Y') ?></p>
-
     </div>
 </footer>
 
