@@ -21,8 +21,8 @@
         <div class="contacts">
           <ul class="contacts__list">
             <li class="contacts__item"><i class="fa fa-map-marker" aria-hidden="true"></i><span class="add">г. Псков, ул. Ленина, д. 8, к. 58</span></li>
-            <li class="contacts__item"><i class="fa fa-phone" aria-hidden="true"></i> <span>Телефон</span></li>
-            <li class="contacts__item"><i class="fa fa-envelope" aria-hidden="true"></i> <span>bolshakova55@yandex.ru</span></li>
+            <li class="contacts__item"><i class="fa fa-phone" aria-hidden="true"></i> <span>+7(8112) 29-70-64</span></li>
+            <li class="contacts__item"><i class="fa fa-envelope" aria-hidden="true"></i> <span><a href="mailto:bolshakova55@yandex.ru">labrfi@yandex.ru</a></span></li>
           </ul>
         </div>
       </div>
@@ -43,8 +43,8 @@
         <div class="contacts footer__contacts">
           <ul class="contacts__list">
             <li class="contacts__item"><i class="fa fa-map-marker" aria-hidden="true"></i> <span class="add">г. Псков, ул. Ленина, д. 8, к. 58</span></li>
-            <li class="contacts__item"><i class="fa fa-phone" aria-hidden="true"></i> <span>Телефон</span></li>
-            <li class="contacts__item"><i class="fa fa-envelope" aria-hidden="true"></i> <span>bolshakova55@yandex.ru</span></li>
+            <li class="contacts__item"><i class="fa fa-phone" aria-hidden="true"></i> <span>+7(8112) 29-70-64</span></li>
+            <li class="contacts__item"><i class="fa fa-envelope" aria-hidden="true"></i> <span><a href="mailto:bolshakova55@yandex.ru">labrfi@yandex.ru</a></span></li>
           </ul>
         </div>
       </div>
@@ -249,5 +249,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .footer__contacts {
   margin-left: 545px;
+}
+
+.contacts__item a {
+  color: #123762;
 }
 </style>
