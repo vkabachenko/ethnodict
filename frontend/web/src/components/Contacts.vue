@@ -14,14 +14,7 @@
                 </ul>
               </div>
             </div>
-            <div class="contact-block-right">
-              <form action="" class="contact-form">
-                <input type="text" placeholder="Ваше имя" class="input-name">
-                <input type="email" placeholder="Ваша почта" class="input-email">
-                <textarea name="" id="" cols="30" rows="10" placeholder="Ваше сообщение" class="input-text"></textarea>
-                <input type="submit" value="Отправить" class="contact-submit">
-              </form>
-            </div>
+            <feedback></feedback>
           </div>
         </div>
       </section>
@@ -29,7 +22,14 @@
 </template>
 
 <script>
+import Feedback from './Feedback.vue'
 
+export default {
+  name: 'Contacts',
+  components: {
+    Feedback
+  }
+}
 </script>
 
 <style scoped>
@@ -68,20 +68,6 @@
     position: relative;
   }
 
-  .contact-block-right:before {
-     content: "";
-     display: block;
-
-     border-top: 27px solid transparent;
-     border-bottom: 27px solid transparent;
-     border-right: 27px solid #123762;
-     width: 0;
-     height: 0;
-     position: absolute;
-     z-index: 3;
-     right: 100%;
-   }
-
   .contact-slogan {
     margin-top: 88px;
     color: #ffffff;
@@ -109,53 +95,6 @@
 
   .contacts__item span,.contacts__item .fa {
     color: #ffffff;
-  }
-
-  .contact-form {
-    padding: 0 50px;
-  }
-
-  .input-name {
-    display: block;
-    width: 100%;
-    height: 70px;
-    border-radius: 3px;
-    padding: 20px;
-    border: none;
-  }
-
-  .input-email {
-    display: block;
-    width: 100%;
-    height: 70px;
-    border-radius: 3px;
-    padding: 20px;
-    margin-top: 30px;
-    border: none;
-  }
-
-  .input-text {
-    display: block;
-    width: 100%;
-    margin-top: 30px;
-    border-radius: 3px;
-    resize: none;
-    padding: 20px;
-    border: none;
-  }
-
-  .contact-submit {
-    display: block;
-    width: 100%;
-    height: 70px;
-    margin-top: 30px;
-    border-radius: 35px;
-    border: none;
-    background: #fff;
-    font-size: 20px;
-    color: #123762;
-    font-weight: 600;
-    cursor: pointer;
   }
 
 </style>
