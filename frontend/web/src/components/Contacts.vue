@@ -9,8 +9,8 @@
               <div class="contacts contact__contacts">
                 <ul class="contacts__list">
                   <li class="contacts__item"><i class="fa fa-map-marker" aria-hidden="true"></i> <span class="add">г. Псков, ул. Ленина, д. 8, к. 58</span></li>
-                  <li class="contacts__item"><i class="fa fa-phone" aria-hidden="true"></i> <span>Телефон</span></li>
-                  <li class="contacts__item"><i class="fa fa-envelope" aria-hidden="true"></i> <span>bolshakova55@yandex.ru</span></li>
+                  <li class="contacts__item"><i class="fa fa-phone" aria-hidden="true"></i> <span>+7(8112) 29-70-64</span></li>
+                  <li class="contacts__item"><i class="fa fa-envelope" aria-hidden="true"></i> <span><a href="mailto:bolshakova55@yandex.ru">labrfi@yandex.ru</a></span></li>
                 </ul>
               </div>
             </div>
@@ -54,8 +54,8 @@ export default {
     text-align: left;
     float: left;
     height: 100%;
-    /*background-image: url("../images/map.png");*/
-    background: #7c7171;
+    background-image: url("../assets/img/contact-map.jpg");
+    /*background: #7c7171;*/
     padding: 0 25px;
   }
 
@@ -70,13 +70,13 @@ export default {
 
   .contact-slogan {
     margin-top: 88px;
-    color: #ffffff;
+    color: #2f2b2b;
     font-size: 20px;
     font-weight: bold;
   }
 
   .contact-subslogan {
-    color: #ffffff;
+    color: #2f2b2b;
     font-weight: bold;
     margin-top: 18px;
   }
@@ -93,8 +93,8 @@ export default {
     margin-top: 0;
   }
 
-  .contacts__item span,.contacts__item .fa {
-    color: #ffffff;
+  .contacts__item span,.contacts__item .fa,.contacts__item a {
+    color: #2f2b2b;
   }
 
 </style>
