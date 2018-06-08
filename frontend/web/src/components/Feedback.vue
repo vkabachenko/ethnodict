@@ -6,7 +6,7 @@
         <textarea name="message" cols="30" rows="10" placeholder="Ваше сообщение" class="input-text" required v-model="message"></textarea>
         <input type="submit" value="Отправить" class="contact-submit" :disabled="status !== null">
       </form>
-      <div v-if="status === 'sent'" class="sent">Сообщение отправлено</div>
+      <div v-if="status === 'sent'" class="sent"><i class="fa fa-check" aria-hidden="true"></i><span>Сообщение отправлено</span></div>
     </div>
 </template>
 
@@ -118,6 +118,22 @@ export default {
 
   .sent {
       color: white;
+      display: inline-block;
+      padding: 30px;
+      background: #EF6261;
+      margin-top: 20px;
+      border-radius: 4px;
+      font-size: 18px;
+  }
+  .sent .fa-check {
+    margin-right: 10px;
+    font-size: 20px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .sent span {
+    display: inline-block;
+    vertical-align: middle;
   }
 
 </style>
