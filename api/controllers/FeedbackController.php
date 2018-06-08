@@ -2,30 +2,37 @@
 
 namespace api\controllers;
 
+use yii\db\ActiveRecord;
+use yii\helpers\Json;
 use yii\rest\ActiveController;
 use common\models\Feedback;
-use common\helpers\CorsCustom;
-use yii\helpers\ArrayHelper;
+use yii\web\ServerErrorHttpException;
 
 class FeedbackController extends ActiveController
 {
     public $modelClass = Feedback::class;
 
-    public function behaviors()
-    {
-        return ArrayHelper::merge(parent::behaviors(),[
-            'corsFilter' => [
-                'class' => CorsCustom::class,
-            ],
-        ]);
-    }
-
     public function actions()
     {
-        $actions = parent::actions();
+        return [];
+    }
 
-        unset($actions['index'], $actions['update'], $actions['delete']);
-        return $actions;
+    public function actionCreate()
+    {
+        /** @var  $model ActiveRecord */
+        $model = new $this->modelClass();
+
+        $data = Json::decode(\Yii::$app->getRequest()->getRawBody());
+        $model->load($data, '');
+        if ($model->save()) {
+            $response = \Yii::$app->getResponse();
+            $response->setStatusCode(201);
+        } elseif (!$model->hasErrors()) {
+            throw new ServerErrorHttpException('Failed to create the object for unknown reason.');
+        }
+
+        return $model;
+
     }
 
 }

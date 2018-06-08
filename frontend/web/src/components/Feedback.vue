@@ -28,11 +28,11 @@ export default {
     onSubmit () {
       this.status = 'pending'
       axios.post(apiUrl + 'feedback/create',
-        {
+        JSON.stringify({
           'name': this.name,
           'email': this.email,
           'message': this.message
-        })
+        }))
         .then(() => {
           this.name = ''
           this.email = ''
