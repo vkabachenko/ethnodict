@@ -57,18 +57,9 @@ export default {
 .dialog {
   background: #123762;
   padding: 20px;
-  /*position: absolute;*/
-  /*top: 100%;*/
-  /*width: 180px;*/
-  /*left: 50%;*/
-  /*margin-left: -90px;*/
-  /*color: #fff;*/
   height: 135px;
   overflow-y: scroll;
   text-align: left;
-  /*display: none;*/
-  /*z-index: 3;*/
-  /*margin-top: 5px;*/
 }
 
 .drop__link {
