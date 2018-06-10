@@ -63,7 +63,6 @@ export default {
   display: inline-block;
   margin-left: 10px;
   margin-top: 10px;
-  /*position: relative;*/
 }
 
 </style>
