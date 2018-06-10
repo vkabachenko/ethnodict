@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import {apiUrl} from '@/api-server.js'
 import axios from 'axios'
 
 export default {
@@ -27,7 +26,7 @@ export default {
   methods: {
     onSubmit () {
       this.status = 'pending'
-      axios.post(apiUrl + 'feedback/create',
+      axios.post(process.env.API_URL + 'feedback/create',
         JSON.stringify({
           'name': this.name,
           'email': this.email,

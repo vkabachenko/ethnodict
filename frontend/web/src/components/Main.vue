@@ -73,7 +73,6 @@
 </template>
 
 <script>
-import {apiUrl} from '@/api-server.js'
 import axios from 'axios'
 import Search from './Search.vue'
 import alertifyjs from 'alertifyjs'
@@ -101,7 +100,7 @@ export default {
     }
   },
   mounted () {
-    axios.all([axios.get(apiUrl + 'words'), axios.get(apiUrl + 'category')])
+    axios.all([axios.get(process.env.API_URL + 'words'), axios.get(process.env.API_URL + 'category')])
       .then(axios.spread((responseWord, responseCategory) => {
         this.items = responseWord.data
         this.$store.commit('loadItems', this.items)
