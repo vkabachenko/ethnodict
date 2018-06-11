@@ -4,39 +4,69 @@
         <input type="text" name="name" placeholder="Ваше имя" class="input-name" required v-model="name">
         <input type="email" name="email" placeholder="Ваша почта" class="input-email" required v-model="email">
         <textarea name="message" cols="30" rows="10" placeholder="Ваше сообщение" class="input-text" required v-model="message"></textarea>
+        <div>
+          <vue-recaptcha
+                ref="recaptcha"
+                @verify="onCaptchaVerified"
+                @expired="onCaptchaExpired"
+                size="invisible"
+                :sitekey="recapthaSiteKey">
+          </vue-recaptcha>
+        </div>
         <input type="submit" value="Отправить" class="contact-submit" :disabled="status !== null">
       </form>
-      <div v-if="status === 'sent'" class="sent"><i class="fa fa-check" aria-hidden="true"></i><span>Сообщение отправлено</span></div>
+      <div v-if="status === 'sent'" class="sent"><i class="fa fa-check" aria-hidden="true"></i>
+        <span> {{messageAfterSend}} </span>
+      </div>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
+import VueRecaptcha from 'vue-recaptcha'
 
 export default {
   name: 'Feedback',
+  components: {
+    VueRecaptcha
+  },
   data () {
     return {
       name: '',
       email: '',
       message: '',
-      status: null
+      status: null,
+      recapthaSiteKey: process.env.RECAPTCHA_SITE_KEY,
+      messageAfterSend: 'Сообщение отправлено'
     }
   },
   methods: {
     onSubmit () {
+      this.$refs.recaptcha.execute()
+    },
+    onCaptchaExpired () {
+      this.$refs.recaptcha.reset()
+    },
+    onCaptchaVerified (recaptchaToken) {
+      this.$refs.recaptcha.reset()
       this.status = 'pending'
+
       axios.post(process.env.API_URL + 'feedback/create',
         JSON.stringify({
           'name': this.name,
           'email': this.email,
-          'message': this.message
+          'message': this.message,
+          'recaptchaToken': recaptchaToken
         }))
-        .then(() => {
+        .then((response) => {
           this.name = ''
           this.email = ''
           this.message = ''
           this.status = 'sent'
+        })
+        .catch((error) => {
+          console.log(error.response)
+          this.messageAfterSend = error.response
         })
     }
   }
