@@ -55,7 +55,20 @@
 <script>
 
 export default {
-  name: 'App'
+  name: 'App',
+  metaInfo: {
+    'title': 'Словарь',
+    'meta': [
+      {'http-equiv': 'Content-Type', 'content': 'text/html'},
+      {'http-equiv': 'Content-Language', 'content': 'ru'},
+      {'name': 'description', 'content': 'Этнолингвистический словарь, отражающий традиционный быт сельских жителей Псковской области'},
+      {'name': 'keywords', 'content': 'словарь, этнический, лингвистический, Псковская область, село, быт'},
+      {'property': 'og:title', 'content': 'Этнолингвистический словарь Псковской области'},
+      {'property': 'og:site_name', 'content': 'Этнолингвистический словарь'},
+      {'property': 'og:type', 'content': 'website'},
+      {'property': 'og:locale', 'content': 'ru_RU'}
+    ]
+  }
 }
 </script>
 

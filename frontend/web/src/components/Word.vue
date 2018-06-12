@@ -60,6 +60,9 @@ export default {
     Tabs,
     Tab
   },
+  metaInfo: {
+    'title': 'Словарь - Слова'
+  },
   data () {
     return {
       item: null

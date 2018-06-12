@@ -28,6 +28,9 @@ export default {
   name: 'Contacts',
   components: {
     Feedback
+  },
+  metaInfo: {
+    'title': 'Словарь - Контакты'
   }
 }
 </script>
